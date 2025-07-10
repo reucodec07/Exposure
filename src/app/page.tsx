@@ -1,7 +1,7 @@
-import Hero from "./components/Hero";
+import HeroSlider from "./components/HeroSlider";
 import About from "./components/About";
 import Services from "./components/Services";
-import Gallery from "./components/Gallery";
+import FilterableGallery from "./components/FilterableGallery";
 import Reviews from "./components/Reviews";
 import Contact from "./components/Contact";
 import WhatsAppFloatingButton from "./components/WhatsAppFloatingButton";
@@ -9,10 +9,10 @@ import WhatsAppFloatingButton from "./components/WhatsAppFloatingButton";
 export default function Page() {
     return (
         <>
-            <Hero />
+            <HeroSlider />
             <About />
             <Services />
-            <Gallery />
+            <FilterableGallery />
             <Reviews />
             <Contact />
             <WhatsAppFloatingButton />
