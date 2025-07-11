@@ -24,14 +24,6 @@ export default function HeroSlider() {
             },
             mode: "snap",
             drag: true,
-            breakpoints: {
-                "(min-width: 768px)": {
-                    slides: {
-                        perView: 1,
-                        spacing: 0
-                    }
-                }
-            },
             created(s: KeenSliderInstance) {
                 const rel = s.track?.details?.rel;
                 if (rel != null) {
@@ -52,9 +44,8 @@ export default function HeroSlider() {
     }, []);
 
     useEffect(() => {
-        if (slider?.current) {
+        if (slider?.current && images.length > 0) {
             slider.current.update();
-            slider.current.moveToIdx(0);
         }
     }, [images, slider]);
 
@@ -91,8 +82,8 @@ export default function HeroSlider() {
                 <div className="hero-text">
                     <div className="hero-text-content">
                         <span className="hero-badge">
-                <span className="hero-badge-text">Illuminate Your Brand</span>
-                <div className="hero-badge-glow" />
+                            <span className="hero-badge-text">Illuminate Your Brand</span>
+                            <div className="hero-badge-glow" />
                         </span>
                         <h1 className="hero-title">
                             <span className="hero-title-line">Pixel Perfect</span>
@@ -132,75 +123,78 @@ export default function HeroSlider() {
 
                 {/* Image Carousel */}
                 <div className="hero-slider">
-                    {!images.length ? (
-                        <div className="hero-loading">
-                            <div className="hero-loading-text">
-                                <span>Loading</span>
-                                <div className="hero-loading-dots">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                            </div>
-                        </div>
-                    ) : (
-                        <div ref={sliderRef} className="hero-slider-container keen-slider">
-                            {images.map((img, idx) => (
-                                <div key={img.public_id} className="keen-slider__slide" style={{ minWidth: '100%' }}>
-                                    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-                                        <Image
-                                            src={img.secure_url}
-                                            alt={`Slide ${idx + 1}`}
-                                            fill
-                                            className="hero-slide-img"
-                                            style={{ objectFit: 'cover' }}
-                                            priority={idx === 0}
-                                        />
-                                        <div className="hero-slide-overlay" />
+                    <div className="hero-slider-wrapper">
+                        {!images.length ? (
+                            <div className="hero-loading">
+                                <div className="hero-loading-text">
+                                    <span>Loading</span>
+                                    <div className="hero-loading-dots">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
                                     </div>
                                 </div>
-                            ))}
-                        </div>
-                    )}
+                            </div>
+                        ) : (
+                            <>
+                                <div ref={sliderRef} className="hero-slider-container keen-slider">
+                                    {images.map((img, idx) => (
+                                        <div key={img.public_id} className="hero-slide keen-slider__slide">
+                                            <Image
+                                                src={img.secure_url}
+                                                alt={`Slide ${idx + 1}`}
+                                                fill
+                                                className="hero-slide-img"
+                                                priority={idx === 0}
+                                                sizes="(max-width: 768px) 100vw, 50vw"
+                                            />
+                                            <div className="hero-slide-overlay" />
+                                        </div>
+                                    ))}
+                                </div>
 
-                    {/* Navigation Dots */}
-                    {loaded && images.length > 1 && (
-                        <div className="hero-dots">
-                            {images.map((_, idx) => (
-                                <button
-                                    key={idx}
-                                    onClick={() => slider?.current?.moveToIdx(idx)}
-                                    aria-label={`Go to slide ${idx + 1}`}
-                                    className={`hero-dot ${slideIdx === idx ? 'active' : ''}`}
-                                />
-                            ))}
-                        </div>
-                    )}
+                                {/* Navigation Dots */}
+                                {loaded && images.length > 1 && (
+                                    <div className="hero-dots">
+                                        {images.map((_, idx) => (
+                                            <button
+                                                key={idx}
+                                                onClick={() => slider?.current?.moveToIdx(idx)}
+                                                aria-label={`Go to slide ${idx + 1}`}
+                                                className={`hero-dot ${slideIdx === idx ? 'active' : ''}`}
+                                            />
+                                        ))}
+                                    </div>
+                                )}
 
-                    {/* Navigation Arrows */}
-                    {loaded && images.length > 1 && (
-                        <>
-                            <button
-                                onClick={() => slider?.current?.prev()}
-                                aria-label="Previous Slide"
-                                className="hero-arrow hero-arrow-prev"
-                            >
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                                </svg>
-                            </button>
-                            <button
-                                onClick={() => slider?.current?.next()}
-                                aria-label="Next Slide"
-                                className="hero-arrow hero-arrow-next"
-                            >
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                </svg>
-                            </button>
-                        </>
-                    )}
+                                {/* Navigation Arrows */}
+                                {loaded && images.length > 1 && (
+                                    <>
+                                        <button
+                                            onClick={() => slider?.current?.prev()}
+                                            aria-label="Previous Slide"
+                                            className="hero-arrow hero-arrow-prev"
+                                        >
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                            </svg>
+                                        </button>
+                                        <button
+                                            onClick={() => slider?.current?.next()}
+                                            aria-label="Next Slide"
+                                            className="hero-arrow hero-arrow-next"
+                                        >
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                            </svg>
+                                        </button>
+                                    </>
+                                )}
+                            </>
+                        )}
+                    </div>
                 </div>
+            </div>
 
             {/* Scroll Indicator */}
             <div className="hero-scroll-indicator">
@@ -210,7 +204,6 @@ export default function HeroSlider() {
                     </div>
                     <span className="hero-scroll-text">Scroll</span>
                 </a>
-            </div>
             </div>
         </section>
     );
