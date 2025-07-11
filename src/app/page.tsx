@@ -5,6 +5,7 @@ import FilterableGallery from "./components/FilterableGallery";
 import Reviews from "./components/Reviews";
 import Contact from "./components/Contact";
 import WhatsAppFloatingButton from "./components/WhatsAppFloatingButton";
+import Footer from './components/Footer';
 
 export default function Page() {
     return (
@@ -16,6 +17,7 @@ export default function Page() {
             <Reviews />
             <Contact />
             <WhatsAppFloatingButton />
+            <Footer />
         </>
     );
 }
