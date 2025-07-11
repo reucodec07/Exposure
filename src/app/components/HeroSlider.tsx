@@ -18,10 +18,7 @@ export default function HeroSlider() {
     const [sliderRef, slider] = useKeenSlider<HTMLDivElement>(
         {
             loop: true,
-            slides: {
-                perView: 1,
-                spacing: 0
-            },
+            slides: { perView: 1, spacing: 0 },
             mode: "snap",
             drag: true,
             created(s: KeenSliderInstance) {
@@ -35,7 +32,8 @@ export default function HeroSlider() {
                 const rel = s.track?.details?.rel;
                 if (rel != null) setSlideIdx(rel);
             },
-        });
+        }
+    );
 
     useEffect(() => {
         fetch("/api/hero-slider")
@@ -81,10 +79,10 @@ export default function HeroSlider() {
                 {/* Text Content */}
                 <div className="hero-text">
                     <div className="hero-text-content">
-                        <span className="hero-badge">
-                            <span className="hero-badge-text">Illuminate Your Brand</span>
-                            <div className="hero-badge-glow" />
-                        </span>
+            <span className="hero-badge">
+              <span className="hero-badge-text">Illuminate Your Brand</span>
+              <div className="hero-badge-glow" />
+            </span>
                         <h1 className="hero-title">
                             <span className="hero-title-line">Pixel Perfect</span>
                             <span className="hero-title-neon">LED Signs</span>
@@ -98,7 +96,7 @@ export default function HeroSlider() {
                                 "Custom LED Boards & Displays",
                                 "24/7 Eye-Catching Visibility",
                                 "Fast Delivery & Installation",
-                            ].map((feat, index) => (
+                            ].map((feat) => (
                                 <li key={feat} className="hero-feature">
                                     <div className="hero-feature-dot" />
                                     <span className="hero-feature-text">{feat}</span>
@@ -110,10 +108,12 @@ export default function HeroSlider() {
                                 <span>View Portfolio</span>
                                 <div className="hero-btn-glow" />
                             </a>
-                            <a href="https://wa.me/919850718413"
-                               target="_blank"
-                               rel="noopener noreferrer"
-                               className="hero-btn hero-btn-secondary">
+                            <a
+                                href="https://wa.me/919850718413"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hero-btn hero-btn-secondary"
+                            >
                                 <span>Get Quote</span>
                                 <div className="hero-btn-glow" />
                             </a>
@@ -129,9 +129,9 @@ export default function HeroSlider() {
                                 <div className="hero-loading-text">
                                     <span>Loading</span>
                                     <div className="hero-loading-dots">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
+                                        <span />
+                                        <span />
+                                        <span />
                                     </div>
                                 </div>
                             </div>
