@@ -2,23 +2,16 @@
 
 import { useEffect, useState } from "react";
 import { Dialog } from "@headlessui/react";
+import { FaExpandAlt, FaTimes, FaChevronLeft, FaChevronRight, FaEye } from "react-icons/fa";
 
 type ImageType = {
     public_id: string;
     secure_url: string;
-    tags: string[];
-    context?: any;
+    tags?: string[];
+    context?: { custom?: { title?: string; description?: string; client?: string } };
 };
 
 const TAGS = ["All", "LED", "ACP", "Neon", "Vehicle"];
-
-const tagGradients: { [key: string]: string } = {
-    "All": "from-blue-500 to-cyan-500",
-    "LED": "from-blue-600 to-blue-400",
-    "ACP": "from-gray-600 to-gray-400",
-    "Neon": "from-pink-500 to-purple-500",
-    "Vehicle": "from-green-500 to-teal-500"
-};
 
 export default function FilterableGallery() {
     const [images, setImages] = useState<ImageType[]>([]);
@@ -26,6 +19,7 @@ export default function FilterableGallery() {
     const [selectedTag, setSelectedTag] = useState("All");
     const [isOpen, setIsOpen] = useState(false);
     const [current, setCurrent] = useState(0);
+    const [showAll, setShowAll] = useState(false);
 
     useEffect(() => {
         setLoading(true);
@@ -34,213 +28,233 @@ export default function FilterableGallery() {
             .then((data) => {
                 setImages(data.resources || []);
                 setLoading(false);
+                setShowAll(false);
             });
     }, [selectedTag]);
 
-    const openModal = (idx: number) => {
-        setCurrent(idx);
-        setIsOpen(true);
+    const visibleCount = showAll ? images.length : Math.min(images.length, 12);
+
+    const nextImage = () => {
+        setCurrent((prev) => (prev === images.length - 1 ? 0 : prev + 1));
     };
 
-    const getProjectDetails = (img: ImageType) => ({
-        title: img.context?.custom?.title || "",
-        description: img.context?.custom?.description || "",
-        client: img.context?.custom?.client || "",
-        tags: img.tags || [],
-    });
+    const prevImage = () => {
+        setCurrent((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+    };
 
     return (
-        <section id="gallery" className="py-20 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
-            {/* Animated pattern */}
-            <div className="absolute inset-0 opacity-5 gallery-pattern"></div>
+        <section id="gallery" className="gallery-section">
+            {/* Background Elements */}
+            <div className="gallery-bg-pattern" />
+            <div className="gallery-bg-glow" />
 
-            <div className="max-w-7xl mx-auto px-4 relative z-10">
-                <div className="text-center mb-12">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                        <span className="gradient-text-blue-animated">
-                            Portfolio Gallery
-                        </span>
+            <div className="gallery-container">
+                {/* Header */}
+                <div className="gallery-header">
+                    <h2 className="gallery-title">
+                        <span className="gallery-title-highlight">Portfolio Gallery</span>
                     </h2>
-                    <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-                        Explore our latest projects and see how we bring brands to life with innovative signage solutions
+                    <p className="gallery-subtitle">
+                        Explore our latest projects and see how we bring brands to life with
+                        innovative signage solutions
                     </p>
-                    <div className="w-24 h-1 mx-auto mt-4 gradient-bar"></div>
+                    <div className="gallery-title-divider" />
                 </div>
 
                 {/* Filter Tabs */}
-                <div className="flex flex-wrap justify-center gap-3 mb-10">
+                <div className="gallery-filters">
                     {TAGS.map((tag) => (
                         <button
                             key={tag}
                             onClick={() => setSelectedTag(tag)}
-                            className={`relative px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                                selectedTag === tag
-                                    ? "text-white shadow-lg"
-                                    : "text-gray-400 hover:text-white bg-gray-800/50 hover:bg-gray-700/50"
-                            }`}
+                            className={`gallery-filter ${selectedTag === tag ? 'active' : ''}`}
                         >
-                            {selectedTag === tag && (
-                                <>
-                                    <div className={`filter-tab-selected bg-gradient-to-r ${tagGradients[tag]}`}></div>
-                                    <div className={`filter-tab-selected-blur bg-gradient-to-r ${tagGradients[tag]}`}></div>
-                                </>
-                            )}
-                            <span className="relative z-10">{tag}</span>
+                            <span>{tag}</span>
+                            <div className="gallery-filter-indicator" />
                         </button>
                     ))}
                 </div>
 
-                {/* Gallery Grid */}
+                {/* Content */}
                 {loading ? (
-                    <div className="flex flex-col items-center justify-center py-20">
-                        <div className="relative">
-                            <div className="gallery-spinner"></div>
-                            <div className="gallery-spinner gallery-spinner-secondary"></div>
+                    <div className="gallery-loading">
+                        <div className="gallery-spinner">
+                            <div className="gallery-spinner-ring"></div>
+                            <div className="gallery-spinner-ring"></div>
+                            <div className="gallery-spinner-ring"></div>
                         </div>
-                        <p className="text-gray-400 mt-4">Loading amazing projects...</p>
+                        <p className="gallery-loading-text">Loading amazing projects...</p>
                     </div>
                 ) : images.length === 0 ? (
-                    <div className="text-center py-20">
-                        <div className="text-6xl mb-4">🔍</div>
-                        <p className="text-gray-400 text-lg">No projects found for this category.</p>
-                        <p className="text-gray-500 mt-2">Try selecting a different category above.</p>
+                    <div className="gallery-empty">
+                        <div className="gallery-empty-icon">🔍</div>
+                        <h3 className="gallery-empty-title">No projects found</h3>
+                        <p className="gallery-empty-text">
+                            Try selecting a different category above.
+                        </p>
                     </div>
                 ) : (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                        {images.map((img, idx) => (
-                            <button
-                                key={img.public_id}
-                                onClick={() => openModal(idx)}
-                                className="group relative rounded-xl overflow-hidden bg-gray-900 hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 gallery-item"
-                                aria-label="Open project details"
-                            >
-                                <div className="aspect-w-16 aspect-h-12 relative overflow-hidden">
-                                    <img
-                                        src={img.secure_url}
-                                        alt={`Project ${idx + 1}`}
-                                        className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
-                                        loading="lazy"
-                                    />
-                                    <div className="gallery-image-overlay"></div>
-
-                                    {/* Hover content */}
-                                    <div className="absolute inset-0 flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        <div className="text-left">
-                                            <p className="text-white font-semibold text-lg">View Project</p>
-                                            <p className="text-gray-300 text-sm">Click to see details</p>
-                                        </div>
-                                    </div>
-
-                                    {/* Corner accent */}
-                                    <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-blue-500/20 to-transparent"></div>
-                                </div>
-                            </button>
-                        ))}
-                    </div>
-                )}
-
-                {/* Modal with project details */}
-                <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="relative z-50">
-                    <div className="fixed inset-0 modal-overlay" aria-hidden="true" />
-                    <div className="fixed inset-0 flex items-center justify-center p-4">
-                        <Dialog.Panel className="w-full max-w-4xl mx-auto bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl shadow-2xl overflow-hidden relative border border-gray-700">
-                            {/* Close button */}
-                            <button
-                                onClick={() => setIsOpen(false)}
-                                className="absolute top-4 right-4 text-gray-400 hover:text-white bg-black/50 rounded-full w-10 h-10 flex items-center justify-center backdrop-blur-sm z-20 transition-colors"
-                                aria-label="Close gallery"
-                            >
-                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                            </button>
-
-                            {images[current] && (
-                                <div className="flex flex-col lg:flex-row">
-                                    {/* Image section */}
-                                    <div className="lg:w-2/3 relative bg-black">
+                    <>
+                        {/* Image Grid */}
+                        <div className="gallery-grid">
+                            {images.slice(0, visibleCount).map((img, idx) => (
+                                <div key={img.public_id} className="gallery-item">
+                                    <div className="gallery-item-container">
                                         <img
-                                            src={images[current].secure_url}
-                                            alt="Project"
-                                            className="w-full h-[400px] lg:h-[500px] object-contain"
+                                            src={img.secure_url}
+                                            alt={`Project ${idx + 1}`}
+                                            className="gallery-item-img"
+                                            loading="lazy"
                                         />
 
-                                        {/* Navigation arrows */}
+                                        {/* Overlay */}
+                                        <div className="gallery-item-overlay">
+                                            <div className="gallery-item-content">
+                                                <h4 className="gallery-item-title">
+                                                    {img.context?.custom?.title || `Project ${idx + 1}`}
+                                                </h4>
+                                                <p className="gallery-item-desc">
+                                                    {img.context?.custom?.description || "Click to view details"}
+                                                </p>
+                                                <button
+                                                    onClick={() => {
+                                                        setCurrent(idx);
+                                                        setIsOpen(true);
+                                                    }}
+                                                    className="gallery-item-btn"
+                                                    aria-label="View project details"
+                                                >
+                                                    <FaExpandAlt />
+                                                    <span>View Details</span>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        {/* Corner Accent */}
+                                        <div className="gallery-item-accent" />
+
+                                        {/* Tags */}
+                                        {img.tags && img.tags.length > 0 && (
+                                            <div className="gallery-item-tags">
+                                                {img.tags.slice(0, 2).map((tag) => (
+                                                    <span key={tag} className="gallery-item-tag">
+                                                        {tag}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* View More Button */}
+                        {images.length > 12 && (
+                            <div className="gallery-view-more">
+                                <button
+                                    onClick={() => setShowAll(!showAll)}
+                                    className="gallery-view-more-btn"
+                                >
+                                    <span>{showAll ? "Show Less" : `View All ${images.length} Projects`}</span>
+                                    <div className="gallery-view-more-glow" />
+                                </button>
+                            </div>
+                        )}
+                    </>
+                )}
+
+                {/* Lightbox Modal */}
+                <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="gallery-modal">
+                    <div className="gallery-modal-backdrop" />
+                    <div className="gallery-modal-container">
+                        <Dialog.Panel className="gallery-modal-panel">
+                            {/* Close Button */}
+                            <button
+                                onClick={() => setIsOpen(false)}
+                                className="gallery-modal-close"
+                                aria-label="Close gallery"
+                            >
+                                <FaTimes />
+                            </button>
+
+                            <div className="gallery-modal-content">
+                                {/* Image Section */}
+                                <div className="gallery-modal-image-section">
+                                    <div className="gallery-modal-image-container">
+                                        <img
+                                            src={images[current]?.secure_url}
+                                            alt={`Project ${current + 1}`}
+                                            className="gallery-modal-image"
+                                        />
+
+                                        {/* Navigation Arrows */}
                                         <button
-                                            onClick={() => setCurrent((c) => (c === 0 ? images.length - 1 : c - 1))}
-                                            className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 backdrop-blur-sm text-white rounded-full w-12 h-12 flex items-center justify-center hover:bg-black/70 transition-colors"
+                                            onClick={prevImage}
+                                            className="gallery-modal-nav gallery-modal-nav-prev"
                                             aria-label="Previous image"
                                         >
-                                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                                            </svg>
+                                            <FaChevronLeft />
                                         </button>
                                         <button
-                                            onClick={() => setCurrent((c) => (c === images.length - 1 ? 0 : c + 1))}
-                                            className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 backdrop-blur-sm text-white rounded-full w-12 h-12 flex items-center justify-center hover:bg-black/70 transition-colors"
+                                            onClick={nextImage}
+                                            className="gallery-modal-nav gallery-modal-nav-next"
                                             aria-label="Next image"
                                         >
-                                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                            </svg>
+                                            <FaChevronRight />
                                         </button>
 
-                                        {/* Image counter */}
-                                        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">
+                                        {/* Image Counter */}
+                                        <div className="gallery-modal-counter">
                                             {current + 1} / {images.length}
                                         </div>
                                     </div>
+                                </div>
 
-                                    {/* Details section */}
-                                    <div className="lg:w-1/3 p-6 lg:p-8">
-                                        <h3 className="text-2xl font-bold gradient-text-blue mb-4">
-                                            {getProjectDetails(images[current]).title || "Featured Project"}
+                                {/* Details Section */}
+                                <div className="gallery-modal-details">
+                                    <div className="gallery-modal-details-content">
+                                        <h3 className="gallery-modal-title">
+                                            {images[current]?.context?.custom?.title || "Featured Project"}
                                         </h3>
 
-                                        <p className="text-gray-300 mb-6">
-                                            {getProjectDetails(images[current]).description ||
-                                                "Another stunning signage solution delivered by Pixel Image Goa. Quality craftsmanship meets innovative design."}
+                                        <p className="gallery-modal-description">
+                                            {images[current]?.context?.custom?.description ||
+                                                "Quality craftsmanship meets innovative design in this stunning signage solution."}
                                         </p>
 
-                                        {/* Client testimonial */}
-                                        {getProjectDetails(images[current]).client && (
-                                            <div className="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4 mb-6">
-                                                <p className="text-blue-400 text-sm font-medium mb-1">Client Feedback</p>
-                                                <p className="text-gray-300 italic">"{getProjectDetails(images[current]).client}"</p>
+                                        {images[current]?.context?.custom?.client && (
+                                            <div className="gallery-modal-client">
+                                                <span className="gallery-modal-client-label">Client:</span>
+                                                <span className="gallery-modal-client-name">
+                                                    {images[current].context.custom.client}
+                                                </span>
                                             </div>
                                         )}
 
-                                        {/* Tags */}
-                                        {getProjectDetails(images[current]).tags.length > 0 && (
-                                            <div className="space-y-2">
-                                                <p className="text-gray-400 text-sm font-medium">Project Type</p>
-                                                <div className="flex flex-wrap gap-2">
-                                                    {getProjectDetails(images[current]).tags.map((t: string) => (
-                                                        <span
-                                                            key={t}
-                                                            className="bg-gradient-to-r from-gray-700 to-gray-600 text-gray-200 text-xs px-3 py-1 rounded-full"
-                                                        >
-                                                            {t}
+                                        {images[current]?.tags && images[current].tags.length > 0 && (
+                                            <div className="gallery-modal-tags">
+                                                <span className="gallery-modal-tags-label">Project Type:</span>
+                                                <div className="gallery-modal-tags-list">
+                                                    {images[current].tags.map((tag) => (
+                                                        <span key={tag} className="gallery-modal-tag">
+                                                            {tag}
                                                         </span>
                                                     ))}
                                                 </div>
                                             </div>
                                         )}
 
-                                        {/* CTA */}
                                         <a
                                             href="#contact"
-                                            className="mt-8 w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-3 rounded-full font-medium hover:from-blue-600 hover:to-cyan-600 transition-all duration-300"
                                             onClick={() => setIsOpen(false)}
+                                            className="gallery-modal-cta"
                                         >
-                                            Get Similar Project Quote
-                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                                            </svg>
+                                            <span>Get Similar Project Quote</span>
+                                            <div className="gallery-modal-cta-glow" />
                                         </a>
                                     </div>
                                 </div>
-                            )}
+                            </div>
                         </Dialog.Panel>
                     </div>
                 </Dialog>
