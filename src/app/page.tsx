@@ -1,23 +1,34 @@
-import HeroSlider from "./components/HeroSlider";
-import About from "./components/About";
-import Services from "./components/Services";
-import FilterableGallery from "./components/FilterableGallery";
-import Reviews from "./components/Reviews";
-import Contact from "./components/Contact";
-import WhatsAppFloatingButton from "./components/WhatsAppFloatingButton";
-import Footer from './components/Footer';
-
+import {
+  About,
+  Contact,
+  FilterableGallery,
+  Footer,
+  HeroSlider,
+  Reviews,
+  Services,
+  WhatsAppFloatingButton,
+} from "./components";
 export default function Page() {
-    return (
-        <>
-            <HeroSlider />
-            <About />
-            <Services />
-            <FilterableGallery />
-            <Reviews />
-            <Contact />
-            <WhatsAppFloatingButton />
-            <Footer />
-        </>
-    );
+  return (
+    <>
+      <HeroSlider />
+      <section id="about">
+        <About />
+      </section>
+      <section id="services">
+        <Services />
+      </section>
+      <section id="gallery">
+        <FilterableGallery />
+      </section>
+      <section id="reviews">
+        <Reviews />
+      </section>
+      <section id="contact">
+        <Contact />
+      </section>
+      <WhatsAppFloatingButton />
+      <Footer />
+    </>
+  );
 }

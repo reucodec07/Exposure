@@ -1,0 +1,9 @@
+export { default as About } from "./About";
+export { default as Contact } from "./Contact";
+export { default as FilterableGallery } from "./FilterableGallery";
+export { default as Footer } from "./Footer";
+export { default as HeroSlider } from "./HeroSlider";
+export { default as Navbar } from "./Navbar";
+export { default as Reviews } from "./Reviews";
+export { default as Services } from "./Services";
+export { default as WhatsAppFloatingButton } from "./WhatsAppFloatingButton";

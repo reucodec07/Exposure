@@ -1,164 +1,150 @@
 "use client";
 
 import {
-    FaPhoneAlt,
-    FaWhatsapp,
-    FaEnvelope,
-    FaMapMarkerAlt,
-    FaFacebookF,
-    FaInstagram,
-    FaLinkedinIn,
-    FaArrowUp,
-    FaStar,
-    FaAward,
-    FaClock
+  FaPhoneAlt,
+  FaWhatsapp,
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaArrowUp,
+  FaStar,
+  FaAward,
+  FaClock,
 } from "react-icons/fa";
 
 export default function Footer() {
-    const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
+  const currentYear = new Date().getFullYear();
 
-    const currentYear = new Date().getFullYear();
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
-    return (
-        <footer className="footer">
-            {/* Main Footer Content */}
-            <div className="footer-main">
-                <div className="footer-container">
-                    <div className="footer-grid">
-                        {/* Company Info */}
-                        <div className="footer-section">
-                            <div className="footer-logo">
-                                <h3 className="footer-brand-name">Pixel Image Goa</h3>
-                                <p className="footer-tagline">LED Signage Experts</p>
-                            </div>
-                            <p className="footer-description">
-                                Goa's premier LED signage and display solutions expert.
-                                We bring your vision to light with cutting-edge technology
-                                and expert craftsmanship.
-                            </p>
-                            <div className="footer-highlights">
-                                <div className="footer-highlight">
-                                    <FaStar className="footer-highlight-icon" />
-                                    <span>5.0 Rating</span>
-                                </div>
-                                <div className="footer-highlight">
-                                    <FaAward className="footer-highlight-icon" />
-                                    <span>500+ Projects</span>
-                                </div>
-                                <div className="footer-highlight">
-                                    <FaClock className="footer-highlight-icon" />
-                                    <span>Fast Delivery</span>
-                                </div>
-                            </div>
-                        </div>
+  return (
+    <footer className="bg-bg-muted text-text-main border-t border-gray-200">
+      <div className="max-w-6xl mx-auto px-4 py-12">
+        <div className="grid md:grid-cols-3 gap-8">
+          {/* Company Info */}
+          <div>
+            <h3 className="text-xl font-bold text-primary">Pixel Image Goa</h3>
+            <p className="text-sm text-text-muted mt-2">
+              Goa&apos;s premier LED signage and display solutions expert. We
+              bring your vision to light.
+            </p>
+            <div className="flex gap-4 mt-4 text-primary text-sm">
+              <div className="flex items-center gap-2">
+                <FaStar /> 5.0 Rating
+              </div>
+              <div className="flex items-center gap-2">
+                <FaAward /> 500+ Projects
+              </div>
+              <div className="flex items-center gap-2">
+                <FaClock /> Fast Delivery
+              </div>
+            </div>
+          </div>
 
-                        {/* Quick Links */}
-                        <div className="footer-section">
-                            <h4 className="footer-section-title">Quick Links</h4>
-                            <ul className="footer-links">
-                                <li><a href="#about" className="footer-link">About Us</a></li>
-                                <li><a href="#services" className="footer-link">Our Services</a></li>
-                                <li><a href="#gallery" className="footer-link">Portfolio</a></li>
-                                <li><a href="#reviews" className="footer-link">Client Reviews</a></li>
-                                <li><a href="#contact" className="footer-link">Contact Us</a></li>
-                            </ul>
-                        </div>
+          {/* Quick Links */}
+          <div>
+            <h4 className="text-lg font-semibold mb-3">Quick Links</h4>
+            <ul className="space-y-2 text-sm">
+              {[
+                { label: "About Us", href: "#about" },
+                { label: "Our Services", href: "#services" },
+                { label: "Portfolio", href: "#gallery" },
+                { label: "Client Reviews", href: "#reviews" },
+                { label: "Contact Us", href: "#contact" },
+              ].map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    className="text-text-muted hover:text-primary transition"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-                        {/* Contact Info */}
-                        <div className="footer-section">
-                            <h4 className="footer-section-title">Get In Touch</h4>
-                            <div className="footer-contact-info">
-                                <div className="footer-contact-item">
-                                    <FaPhoneAlt className="footer-contact-icon" />
-                                    <div>
-                                        <span className="footer-contact-label">Call Us</span>
-                                        <a href="tel:+919850718413" className="footer-contact-value">
-                                            +91 98507 18413
-                                        </a>
-                                    </div>
-                                </div>
-                                <div className="footer-contact-item">
-                                    <FaEnvelope className="footer-contact-icon" />
-                                    <div>
-                                        <span className="footer-contact-label">Email</span>
-                                        <a href="mailto:pixelimagegoa@gmail.com" className="footer-contact-value">
-                                            pixelimagegoa@gmail.com
-                                        </a>
-                                    </div>
-                                </div>
-                                <div className="footer-contact-item">
-                                    <FaMapMarkerAlt className="footer-contact-icon" />
-                                    <div>
-                                        <span className="footer-contact-label">Service Area</span>
-                                        <span className="footer-contact-value">All Across Goa</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Social Links */}
-                            <div className="footer-social">
-                                <h5 className="footer-social-title">Follow Us</h5>
-                                <div className="footer-social-links">
-                                    <a href="#" className="footer-social-link" aria-label="Facebook">
-                                        <FaFacebookF />
-                                    </a>
-                                    <a href="#" className="footer-social-link" aria-label="Instagram">
-                                        <FaInstagram />
-                                    </a>
-                                    <a href="#" className="footer-social-link" aria-label="LinkedIn">
-                                        <FaLinkedinIn />
-                                    </a>
-                                    <a
-                                        href="https://wa.me/919850718413"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="footer-social-link whatsapp"
-                                        aria-label="WhatsApp"
-                                    >
-                                        <FaWhatsapp />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          {/* Contact Info */}
+          <div>
+            <h4 className="text-lg font-semibold mb-3">Get In Touch</h4>
+            <div className="space-y-4 text-sm text-text-muted">
+              <div className="flex items-center gap-3">
+                <FaPhoneAlt className="text-primary" /> +91 98507 18413
+              </div>
+              <div className="flex items-center gap-3">
+                <FaEnvelope className="text-primary" />
+                <a href="mailto:pixelimagegoa@gmail.com">
+                  pixelimagegoa@gmail.com
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
+                <FaMapMarkerAlt className="text-primary" /> All Across Goa
+              </div>
             </div>
 
-            {/* Footer Bottom */}
-            <div className="footer-bottom">
-                <div className="footer-container">
-                    <div className="footer-bottom-content">
-                        <div className="footer-copyright">
-                            <p>&copy; {currentYear} Pixel Image Goa. All rights reserved.</p>
-                            <p className="footer-copyright-sub">
-                                Crafted with ❤️ by SetApartDesigns.com x Designablebits.com
-                            </p>
-                        </div>
-                        <div className="footer-bottom-links">
-                            <a href="#" className="footer-bottom-link">Privacy Policy</a>
-                            <span className="footer-divider">•</span>
-                            <a href="#" className="footer-bottom-link">Terms of Service</a>
-                            <span className="footer-divider">•</span>
-                            <a href="#contact" className="footer-bottom-link">Get Quote</a>
-                        </div>
-                    </div>
-                </div>
+            <div className="mt-4">
+              <h5 className="text-sm font-semibold text-text-main mb-2">
+                Follow Us
+              </h5>
+              <div className="flex gap-3">
+                {[
+                  { icon: <FaFacebookF />, href: "#" },
+                  { icon: <FaInstagram />, href: "#" },
+                  { icon: <FaLinkedinIn />, href: "#" },
+                  {
+                    icon: <FaWhatsapp />,
+                    href: "https://wa.me/919850718413",
+                  },
+                ].map((item, i) => (
+                  <a
+                    key={i}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-9 h-9 flex items-center justify-center border border-primary text-primary rounded-full hover:bg-primary hover:text-white transition"
+                    aria-label="Social Link"
+                  >
+                    {item.icon}
+                  </a>
+                ))}
+              </div>
             </div>
+          </div>
+        </div>
 
-            {/* Scroll to Top Button */}
-            <button
-                onClick={scrollToTop}
-                className="footer-scroll-top"
-                aria-label="Scroll to top"
-            >
-                <FaArrowUp />
-            </button>
+        {/* Footer Bottom */}
+        <div className="mt-12 border-t pt-6 border-gray-200 flex flex-col md:flex-row justify-between text-sm text-text-muted">
+          <p>&copy; {currentYear} Pixel Image Goa. All rights reserved.</p>
+          <p>Crafted by SetApartDesigns.com x Designablebits.com</p>
+        </div>
 
-            {/* Background Effects */}
-            <div className="footer-bg-grid" />
-            <div className="footer-bg-glow" />
-        </footer>
-    );
+        <div className="mt-4 text-center space-x-4 text-sm">
+          <a href="#" className="hover:text-primary">
+            Privacy Policy
+          </a>
+          <span className="text-gray-400">•</span>
+          <a href="#" className="hover:text-primary">
+            Terms of Service
+          </a>
+          <span className="text-gray-400">•</span>
+          <a href="#contact" className="hover:text-primary">
+            Get Quote
+          </a>
+        </div>
+
+        {/* Scroll to Top */}
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 w-10 h-10 bg-primary text-white rounded-full shadow-lg flex items-center justify-center hover:bg-primary-dark transition"
+          aria-label="Scroll to top"
+        >
+          <FaArrowUp />
+        </button>
+      </div>
+    </footer>
+  );
 }

@@ -1,22 +1,16 @@
 @import "tailwindcss";
-@import 'keen-slider/keen-slider.min.css';
-
-/* ===== ROOT VARIABLES ===== */
+@import "keen-slider/keen-slider.min.css";
 :root {
-  --neon-green: #00ff00;
-  --neon-green-dark: #00cc00;
-  --neon-green-light: #33ff33;
-  --black: #000000;
-  --gray-900: #0a0a0a;
-  --gray-800: #1a1a1a;
-  --gray-700: #2a2a2a;
-  --gray-600: #3a3a3a;
-  --gray-500: #5a5a5a;
-  --gray-400: #7a7a7a;
-  --gray-300: #9a9a9a;
-  --gray-200: #bababa;
-  --gray-100: #dadada;
-  --white: #ffffff;
+  --primary: #4caf50;
+  --primary-dark: #388e3c;
+  --primary-light: #c8e6c9;
+  --text-main: #1a1a1a;
+  --text-muted: #666666;
+  --bg-main: #ffffff;
+  --bg-muted: #f8f9fa;
+  --card-bg: #ffffff;
+  --card-border: #e0e0e0;
+  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 /* ===== BASE STYLES ===== */
@@ -29,9 +23,9 @@ html {
 }
 
 body {
-  background: var(--black);
-  color: var(--white);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--white);
+  color: var(--black);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
@@ -68,40 +62,53 @@ body {
 }
 
 @keyframes neonPulse {
-  0%, 100% {
-    text-shadow:
-            0 0 5px var(--neon-green),
-            0 0 10px var(--neon-green),
-            0 0 15px var(--neon-green),
-            0 0 20px var(--neon-green);
+  0%,
+  100% {
+    text-shadow: 0 0 5px var(--neon-green), 0 0 10px var(--neon-green),
+      0 0 15px var(--neon-green), 0 0 20px var(--neon-green);
   }
   50% {
-    text-shadow:
-            0 0 2px var(--neon-green),
-            0 0 5px var(--neon-green),
-            0 0 8px var(--neon-green),
-            0 0 12px var(--neon-green);
+    text-shadow: 0 0 2px var(--neon-green), 0 0 5px var(--neon-green),
+      0 0 8px var(--neon-green), 0 0 12px var(--neon-green);
   }
 }
 
 @keyframes gridMove {
-  0% { transform: translateX(0) translateY(0); }
-  100% { transform: translateX(-50px) translateY(-50px); }
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    transform: translateX(-50px) translateY(-50px);
+  }
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
 @keyframes slideInLeft {
@@ -247,7 +254,7 @@ body {
 
 .navbar-link {
   position: relative;
-  color: var(--gray-300);
+  color: var(--text-muted);
   text-decoration: none;
   padding: 0.5rem 1rem;
   font-weight: 500;
@@ -278,7 +285,11 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: linear-gradient(135deg, var(--neon-green), var(--neon-green-dark));
+  background: linear-gradient(
+    135deg,
+    var(--neon-green),
+    var(--neon-green-dark)
+  );
   color: var(--black);
   text-decoration: none;
   padding: 0.5rem 1.25rem;
@@ -379,7 +390,7 @@ body {
 }
 
 .navbar-mobile-link {
-  color: var(--gray-300);
+  color: var(--text-muted);
   text-decoration: none;
   font-size: 1.5rem;
   font-weight: 500;
@@ -395,7 +406,11 @@ body {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  background: linear-gradient(135deg, var(--neon-green), var(--neon-green-dark));
+  background: linear-gradient(
+    135deg,
+    var(--neon-green),
+    var(--neon-green-dark)
+  );
   color: var(--black);
   text-decoration: none;
   padding: 0.75rem 1.5rem;
@@ -411,23 +426,22 @@ body {
   box-shadow: 0 6px 20px rgba(0, 255, 0, 0.5);
 }
 
-
 /* ===== HERO SECTION ===== */
 .hero-section {
   position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: var(--black);
+  background: var(--bg-main);
+  color: var(--text-main);
   overflow: hidden;
 }
 
 .hero-bg-grid {
   position: absolute;
   inset: 0;
-  background-image:
-          linear-gradient(rgba(0, 255, 0, 0.1) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(0, 255, 0, 0.1) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(0, 255, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 0, 0.1) 1px, transparent 1px);
   background-size: 50px 50px;
   animation: gridMove 20s linear infinite;
   opacity: 0.3;
@@ -508,16 +522,14 @@ body {
 
 .hero-title-line {
   display: block;
-  color: var(--white);
+  color: var(--text-main);
 }
 
 .hero-title-neon {
   display: block;
   color: var(--neon-green);
-  text-shadow:
-          0 0 5px var(--neon-green),
-          0 0 10px var(--neon-green),
-          0 0 15px var(--neon-green);
+  text-shadow: 0 0 5px var(--neon-green), 0 0 10px var(--neon-green),
+    0 0 15px var(--neon-green);
   animation: neonPulse 2s ease-in-out infinite;
 }
 
@@ -551,7 +563,7 @@ body {
 }
 
 .hero-feature-text {
-  color: var(--gray-300);
+  color: var(--text-muted);
 }
 
 .hero-actions {
@@ -574,7 +586,11 @@ body {
 }
 
 .hero-btn-primary {
-  background: linear-gradient(135deg, var(--neon-green), var(--neon-green-dark));
+  background: linear-gradient(
+    135deg,
+    var(--neon-green),
+    var(--neon-green-dark)
+  );
   color: var(--black);
   box-shadow: 0 4px 15px rgba(0, 255, 0, 0.3);
 }
@@ -680,10 +696,10 @@ body {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-          to top,
-          rgba(0, 0, 0, 0.8),
-          rgba(0, 0, 0, 0.2) 50%,
-          transparent
+    to top,
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0.2) 50%,
+    transparent
   );
 }
 
@@ -874,27 +890,9 @@ body {
 .about-section {
   position: relative;
   padding: 6rem 0;
-  background: var(--black);
+  background: var(--bg-main);
+  color: var(--text-main);
   overflow: hidden;
-}
-
-.about-bg-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-          radial-gradient(circle at 1px 1px, rgba(0, 255, 0, 0.15) 1px, transparent 0);
-  background-size: 40px 40px;
-  opacity: 0.3;
-}
-
-.about-bg-glow {
-  position: absolute;
-  top: 20%;
-  left: 20%;
-  width: 60%;
-  height: 60%;
-  background: radial-gradient(circle, rgba(0, 255, 0, 0.1), transparent 70%);
-  filter: blur(40px);
 }
 
 .about-container {
@@ -920,15 +918,13 @@ body {
 
 .about-title-highlight {
   color: var(--neon-green);
-  text-shadow:
-          0 0 10px var(--neon-green),
-          0 0 20px var(--neon-green),
-          0 0 30px var(--neon-green);
+  text-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green),
+    0 0 30px var(--neon-green);
   animation: neonPulse 3s ease-in-out infinite;
 }
 
 .about-title-text {
-  color: var(--white);
+  color: var(--text-main);
 }
 
 .about-title-divider {
@@ -961,7 +957,7 @@ body {
 .about-intro {
   font-size: 1.125rem;
   line-height: 1.6;
-  color: var(--gray-300);
+  color: var(--text-muted);
   margin-bottom: 2rem;
 }
 
@@ -996,9 +992,7 @@ body {
   height: 12px;
   background: var(--neon-green);
   border-radius: 50%;
-  box-shadow:
-          0 0 10px var(--neon-green),
-          0 0 20px rgba(0, 255, 0, 0.3);
+  box-shadow: 0 0 10px var(--neon-green), 0 0 20px rgba(0, 255, 0, 0.3);
   animation: pulse 2s infinite;
 }
 
@@ -1008,7 +1002,7 @@ body {
 
 .about-feature-title {
   font-weight: 600;
-  color: var(--white);
+  color: var(--text-main);
   margin-bottom: 0.25rem;
 }
 
@@ -1064,9 +1058,7 @@ body {
   font-size: 2.5rem;
   font-weight: 700;
   color: var(--neon-green);
-  text-shadow:
-          0 0 10px var(--neon-green),
-          0 0 20px rgba(0, 255, 0, 0.5);
+  text-shadow: 0 0 10px var(--neon-green), 0 0 20px rgba(0, 255, 0, 0.5);
   margin-bottom: 0.5rem;
 }
 
@@ -1079,7 +1071,11 @@ body {
 .about-stat-glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(0, 255, 0, 0.1), transparent 70%);
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 255, 0, 0.1),
+    transparent 70%
+  );
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -1113,7 +1109,7 @@ body {
 .about-why-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--white);
+  color: var(--text-main);
 }
 
 .about-why-content {
@@ -1141,7 +1137,7 @@ body {
 }
 
 .about-why-text {
-  color: var(--gray-300);
+  color: var(--text-muted);
   line-height: 1.6;
 }
 
@@ -1179,7 +1175,7 @@ body {
 }
 
 .about-trust-text {
-  color: var(--gray-300);
+  color: var(--text-muted);
   font-weight: 500;
 }
 
@@ -1201,16 +1197,16 @@ body {
 .services-section {
   position: relative;
   padding: 6rem 0;
-  background: var(--black);
+  background: var(--bg-main);
+  color: var(--text-main);
   overflow: hidden;
 }
 
 .services-bg-grid {
   position: absolute;
   inset: 0;
-  background-image:
-          linear-gradient(rgba(0, 255, 0, 0.08) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(0, 255, 0, 0.08) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(0, 255, 0, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 0, 0.08) 1px, transparent 1px);
   background-size: 60px 60px;
   animation: gridMove 25s linear infinite;
   opacity: 0.4;
@@ -1248,9 +1244,7 @@ body {
 
 .services-title-highlight {
   color: var(--neon-green);
-  text-shadow:
-          0 0 10px var(--neon-green),
-          0 0 20px var(--neon-green);
+  text-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green);
   animation: neonPulse 3s ease-in-out infinite;
 }
 
@@ -1293,7 +1287,7 @@ body {
 }
 
 .services-filter:hover {
-  color: var(--white);
+  color: var(--text-main);
   border-color: rgba(0, 255, 0, 0.6);
 }
 
@@ -1367,10 +1361,10 @@ body {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-          to top,
-          rgba(0, 0, 0, 0.8),
-          rgba(0, 0, 0, 0.2) 50%,
-          transparent
+    to top,
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0.2) 50%,
+    transparent
   );
 }
 
@@ -1403,7 +1397,7 @@ body {
 .service-title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--white);
+  color: var(--text-main);
   margin-bottom: 0.75rem;
 }
 
@@ -1449,7 +1443,7 @@ body {
 }
 
 .service-description {
-  color: var(--gray-300);
+  color: var(--text-muted);
   line-height: 1.6;
   margin-bottom: 1rem;
 }
@@ -1458,7 +1452,11 @@ body {
   position: relative;
   display: inline-flex;
   align-items: center;
-  background: linear-gradient(135deg, var(--neon-green), var(--neon-green-dark));
+  background: linear-gradient(
+    135deg,
+    var(--neon-green),
+    var(--neon-green-dark)
+  );
   color: var(--black);
   text-decoration: none;
   padding: 0.5rem 1rem;
@@ -1490,7 +1488,11 @@ body {
 .service-card-glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(0, 255, 0, 0.1), transparent 70%);
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 255, 0, 0.1),
+    transparent 70%
+  );
   opacity: 0;
   transition: opacity 0.4s ease;
   pointer-events: none;
@@ -1508,7 +1510,7 @@ body {
 .services-cta-title {
   font-size: 1.75rem;
   font-weight: 700;
-  color: var(--white);
+  color: var(--text-main);
   margin-bottom: 0.75rem;
 }
 
@@ -1522,7 +1524,11 @@ body {
   position: relative;
   display: inline-flex;
   align-items: center;
-  background: linear-gradient(135deg, var(--neon-green), var(--neon-green-dark));
+  background: linear-gradient(
+    135deg,
+    var(--neon-green),
+    var(--neon-green-dark)
+  );
   color: var(--black);
   text-decoration: none;
   padding: 1rem 2rem;
@@ -1555,16 +1561,24 @@ body {
 .gallery-section {
   position: relative;
   padding: 6rem 0;
-  background: var(--black);
+  background: var(--bg-main);
+  color: var(--text-main);
   overflow: hidden;
 }
 
 .gallery-bg-pattern {
   position: absolute;
   inset: 0;
-  background-image:
-          radial-gradient(circle at 25% 25%, rgba(0, 255, 0, 0.1) 2px, transparent 2px),
-          radial-gradient(circle at 75% 75%, rgba(0, 255, 0, 0.1) 2px, transparent 2px);
+  background-image: radial-gradient(
+      circle at 25% 25%,
+      rgba(0, 255, 0, 0.1) 2px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 75% 75%,
+      rgba(0, 255, 0, 0.1) 2px,
+      transparent 2px
+    );
   background-size: 80px 80px;
   opacity: 0.3;
 }
@@ -1601,9 +1615,7 @@ body {
 
 .gallery-title-highlight {
   color: var(--neon-green);
-  text-shadow:
-          0 0 10px var(--neon-green),
-          0 0 20px var(--neon-green);
+  text-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green);
   animation: neonPulse 3s ease-in-out infinite;
 }
 
@@ -1646,7 +1658,7 @@ body {
 }
 
 .gallery-filter:hover {
-  color: var(--white);
+  color: var(--text-main);
   border-color: rgba(0, 255, 0, 0.6);
   background: rgba(0, 255, 0, 0.1);
 }
@@ -1728,7 +1740,7 @@ body {
 .gallery-empty-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--white);
+  color: var(--text-main);
   margin-bottom: 0.5rem;
 }
 
@@ -1786,10 +1798,10 @@ body {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-          to top,
-          rgba(0, 0, 0, 0.9),
-          rgba(0, 0, 0, 0.3) 50%,
-          transparent
+    to top,
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.3) 50%,
+    transparent
   );
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -1809,12 +1821,12 @@ body {
 .gallery-item-title {
   font-size: 1.125rem;
   font-weight: 700;
-  color: var(--white);
+  color: var(--text-main);
   margin-bottom: 0.5rem;
 }
 
 .gallery-item-desc {
-  color: var(--gray-300);
+  color: var(--text-muted);
   font-size: 0.875rem;
   margin-bottom: 1rem;
   line-height: 1.4;
@@ -1885,7 +1897,11 @@ body {
 
 .gallery-view-more-btn {
   position: relative;
-  background: linear-gradient(135deg, var(--neon-green), var(--neon-green-dark));
+  background: linear-gradient(
+    135deg,
+    var(--neon-green),
+    var(--neon-green-dark)
+  );
   color: var(--black);
   border: none;
   padding: 1rem 2rem;
@@ -1939,7 +1955,8 @@ body {
 
 .gallery-modal-panel {
   position: relative;
-  background: var(--black);
+  background: var(--bg-main);
+  color: var(--text-main);
   border: 1px solid rgba(0, 255, 0, 0.3);
   border-radius: 1.5rem;
   overflow: hidden;
@@ -2082,7 +2099,7 @@ body {
 }
 
 .gallery-modal-description {
-  color: var(--gray-300);
+  color: var(--text-muted);
   line-height: 1.6;
   margin-bottom: 1.5rem;
   flex-grow: 1;
@@ -2099,7 +2116,7 @@ body {
 }
 
 .gallery-modal-client-name {
-  color: var(--white);
+  color: var(--text-main);
   font-weight: 600;
 }
 
@@ -2134,7 +2151,11 @@ body {
   position: relative;
   display: inline-flex;
   align-items: center;
-  background: linear-gradient(135deg, var(--neon-green), var(--neon-green-dark));
+  background: linear-gradient(
+    135deg,
+    var(--neon-green),
+    var(--neon-green-dark)
+  );
   color: var(--black);
   text-decoration: none;
   padding: 0.75rem 1.5rem;
@@ -2166,18 +2187,22 @@ body {
 .reviews-section {
   position: relative;
   padding: 6rem 0;
-  background: var(--black);
+  background: var(--bg-main);
+  color: var(--text-main);
   overflow: hidden;
 }
 
 .reviews-bg-grid {
   position: absolute;
   inset: 0;
-  background-image:
-          linear-gradient(45deg, rgba(0, 255, 0, 0.03) 25%, transparent 25%),
-          linear-gradient(-45deg, rgba(0, 255, 0, 0.03) 25%, transparent 25%),
-          linear-gradient(45deg, transparent 75%, rgba(0, 255, 0, 0.03) 75%),
-          linear-gradient(-45deg, transparent 75%, rgba(0, 255, 0, 0.03) 75%);
+  background-image: linear-gradient(
+      45deg,
+      rgba(0, 255, 0, 0.03) 25%,
+      transparent 25%
+    ),
+    linear-gradient(-45deg, rgba(0, 255, 0, 0.03) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(0, 255, 0, 0.03) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(0, 255, 0, 0.03) 75%);
   background-size: 40px 40px;
   background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
   opacity: 0.4;
@@ -2216,9 +2241,7 @@ body {
 
 .reviews-title-highlight {
   color: var(--neon-green);
-  text-shadow:
-          0 0 10px var(--neon-green),
-          0 0 20px var(--neon-green);
+  text-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green);
   animation: neonPulse 3s ease-in-out infinite;
 }
 
@@ -2329,7 +2352,11 @@ body {
   position: relative;
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, var(--neon-green), var(--neon-green-dark));
+  background: linear-gradient(
+    135deg,
+    var(--neon-green),
+    var(--neon-green-dark)
+  );
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -2360,7 +2387,7 @@ body {
 .review-name {
   font-size: 1.125rem;
   font-weight: 700;
-  color: var(--white);
+  color: var(--text-main);
   margin-bottom: 0.25rem;
 }
 
@@ -2397,7 +2424,7 @@ body {
 }
 
 .review-text {
-  color: var(--gray-300);
+  color: var(--text-muted);
   line-height: 1.6;
   font-style: italic;
 }
@@ -2418,7 +2445,11 @@ body {
 .review-card-glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(0, 255, 0, 0.1), transparent 70%);
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 255, 0, 0.1),
+    transparent 70%
+  );
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
@@ -2492,7 +2523,7 @@ body {
 .reviews-cta-title {
   font-size: 1.75rem;
   font-weight: 700;
-  color: var(--white);
+  color: var(--text-main);
   margin-bottom: 0.75rem;
 }
 
@@ -2506,7 +2537,11 @@ body {
   position: relative;
   display: inline-flex;
   align-items: center;
-  background: linear-gradient(135deg, var(--neon-green), var(--neon-green-dark));
+  background: linear-gradient(
+    135deg,
+    var(--neon-green),
+    var(--neon-green-dark)
+  );
   color: var(--black);
   text-decoration: none;
   padding: 1rem 2rem;
@@ -2539,16 +2574,16 @@ body {
 .contact-section {
   position: relative;
   padding: 6rem 0;
-  background: var(--black);
+  background: var(--bg-main);
+  color: var(--text-main);
   overflow: hidden;
 }
 
 .contact-bg-grid {
   position: absolute;
   inset: 0;
-  background-image:
-          linear-gradient(rgba(0, 255, 0, 0.05) 2px, transparent 2px),
-          linear-gradient(90deg, rgba(0, 255, 0, 0.05) 2px, transparent 2px);
+  background-image: linear-gradient(rgba(0, 255, 0, 0.05) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(0, 255, 0, 0.05) 2px, transparent 2px);
   background-size: 100px 100px;
   animation: gridMove 30s linear infinite;
   opacity: 0.5;
@@ -2587,14 +2622,12 @@ body {
 
 .contact-title-highlight {
   color: var(--neon-green);
-  text-shadow:
-          0 0 10px var(--neon-green),
-          0 0 20px var(--neon-green);
+  text-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green);
   animation: neonPulse 3s ease-in-out infinite;
 }
 
 .contact-title-text {
-  color: var(--white);
+  color: var(--text-main);
 }
 
 .contact-subtitle {
@@ -2635,7 +2668,7 @@ body {
 .contact-methods-title {
   font-size: 1.75rem;
   font-weight: 700;
-  color: var(--white);
+  color: var(--text-main);
   margin-bottom: 2rem;
 }
 
@@ -2716,7 +2749,7 @@ body {
 }
 
 .contact-card-value {
-  color: var(--white);
+  color: var(--text-main);
   font-size: 1.125rem;
   font-weight: 700;
   margin-bottom: 0.25rem;
@@ -2745,7 +2778,11 @@ body {
 .contact-card-glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(0, 255, 0, 0.1), transparent 70%);
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 255, 0, 0.1),
+    transparent 70%
+  );
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -2796,7 +2833,7 @@ body {
 .contact-info-title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--white);
+  color: var(--text-main);
 }
 
 .contact-hours {
@@ -2818,7 +2855,7 @@ body {
 }
 
 .contact-hour-day {
-  color: var(--gray-300);
+  color: var(--text-muted);
   font-weight: 500;
 }
 
@@ -2835,7 +2872,7 @@ body {
 }
 
 .contact-guarantee-text {
-  color: var(--gray-300);
+  color: var(--text-muted);
   line-height: 1.6;
   margin-bottom: 1.5rem;
 }
@@ -2859,7 +2896,11 @@ body {
 }
 
 .contact-guarantee-btn.primary {
-  background: linear-gradient(135deg, var(--neon-green), var(--neon-green-dark));
+  background: linear-gradient(
+    135deg,
+    var(--neon-green),
+    var(--neon-green-dark)
+  );
   color: var(--black);
   box-shadow: 0 4px 15px rgba(0, 255, 0, 0.3);
 }
@@ -2894,7 +2935,7 @@ body {
 }
 
 .contact-feature-text {
-  color: var(--gray-300);
+  color: var(--text-muted);
   font-size: 0.875rem;
   line-height: 1.4;
 }
@@ -2908,7 +2949,7 @@ body {
 .contact-cta-title {
   font-size: 1.75rem;
   font-weight: 700;
-  color: var(--white);
+  color: var(--text-main);
   margin-bottom: 0.75rem;
 }
 
@@ -2940,7 +2981,11 @@ body {
 }
 
 .contact-cta-btn.primary {
-  background: linear-gradient(135deg, var(--neon-green), var(--neon-green-dark));
+  background: linear-gradient(
+    135deg,
+    var(--neon-green),
+    var(--neon-green-dark)
+  );
   color: var(--black);
   box-shadow: 0 6px 20px rgba(0, 255, 0, 0.3);
 }
@@ -2990,7 +3035,11 @@ body {
   bottom: 80px;
   right: 0;
   width: 300px;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(0, 20, 0, 0.95));
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.95),
+    rgba(0, 20, 0, 0.95)
+  );
   border: 1px solid rgba(0, 255, 0, 0.3);
   border-radius: 1rem;
   padding: 1.5rem;
@@ -3018,7 +3067,11 @@ body {
 .whatsapp-chat-avatar {
   width: 40px;
   height: 40px;
-  background: linear-gradient(135deg, var(--neon-green), var(--neon-green-dark));
+  background: linear-gradient(
+    135deg,
+    var(--neon-green),
+    var(--neon-green-dark)
+  );
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -3029,7 +3082,7 @@ body {
 }
 
 .whatsapp-chat-info h4 {
-  color: var(--white);
+  color: var(--text-main);
   font-weight: 600;
   margin: 0 0 0.25rem 0;
   font-size: 0.875rem;
@@ -3054,7 +3107,7 @@ body {
 }
 
 .whatsapp-chat-message p {
-  color: var(--gray-300);
+  color: var(--text-muted);
   font-size: 0.875rem;
   line-height: 1.4;
   margin: 0;
@@ -3080,7 +3133,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--white);
+  color: var(--text-main);
   text-decoration: none;
   transition: all 0.3s ease;
   box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
@@ -3127,7 +3180,7 @@ body {
   justify-content: center;
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--white);
+  color: var(--text-main);
   border: 2px solid var(--black);
   animation: bounce 2s ease-in-out infinite;
 }
@@ -3153,7 +3206,8 @@ body {
 
 /* WhatsApp Animations */
 @keyframes whatsappPulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
     opacity: 0.7;
   }
@@ -3179,7 +3233,11 @@ body {
 }
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
     transform: translateY(0);
   }
   40% {
@@ -3216,7 +3274,8 @@ body {
 /* ===== FOOTER STYLES ===== */
 .footer {
   position: relative;
-  background: var(--black);
+  background: var(--bg-main);
+  color: var(--text-main);
   overflow: hidden;
 }
 
@@ -3224,9 +3283,8 @@ body {
 .footer-bg-grid {
   position: absolute;
   inset: 0;
-  background-image:
-          linear-gradient(rgba(0, 255, 0, 0.03) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(0, 255, 0, 0.03) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(0, 255, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 0, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
   opacity: 0.5;
 }
@@ -3296,7 +3354,7 @@ body {
 }
 
 .footer-description {
-  color: var(--gray-300);
+  color: var(--text-muted);
   line-height: 1.6;
   margin-bottom: 1.5rem;
 }
@@ -3311,7 +3369,7 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--gray-300);
+  color: var(--text-muted);
   font-size: 0.875rem;
 }
 
@@ -3325,13 +3383,13 @@ body {
 .footer-section-title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--white);
+  color: var(--text-main);
   margin-bottom: 1.5rem;
   position: relative;
 }
 
 .footer-section-title::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -0.5rem;
   left: 0;
@@ -3367,7 +3425,7 @@ body {
 }
 
 .footer-link::before {
-  content: '→';
+  content: "→";
   position: absolute;
   left: -15px;
   opacity: 0;
@@ -3409,7 +3467,7 @@ body {
 }
 
 .footer-contact-value {
-  color: var(--gray-300);
+  color: var(--text-muted);
   font-weight: 500;
   text-decoration: none;
   transition: color 0.3s ease;
@@ -3427,7 +3485,7 @@ body {
 .footer-social-title {
   font-size: 1rem;
   font-weight: 600;
-  color: var(--white);
+  color: var(--text-main);
   margin-bottom: 1rem;
 }
 
@@ -3463,12 +3521,12 @@ body {
 .footer-social-link.whatsapp:hover {
   background: #25d366;
   border-color: #25d366;
-  color: var(--white);
+  color: var(--text-main);
   box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
 }
 
 .footer-social-link::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: inherit;
@@ -3552,7 +3610,11 @@ body {
   left: 2rem;
   width: 50px;
   height: 50px;
-  background: linear-gradient(135deg, var(--neon-green), var(--neon-green-dark));
+  background: linear-gradient(
+    135deg,
+    var(--neon-green),
+    var(--neon-green-dark)
+  );
   border: none;
   border-radius: 50%;
   color: var(--black);
@@ -3624,4 +3686,17 @@ body {
   .footer-social-links {
     justify-content: center;
   }
+}
+.btn {
+  background-color: var(--primary);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-1px);
 }
