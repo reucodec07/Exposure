@@ -43,9 +43,4 @@ next-env.d.ts
 .idea/
 .idea
 
-
-# Ignore admin uploader and related scripts
-AdminUploader.tsx
-page.tsx
-upload-image.ts
-delete-image.ts
+tsconfig.tsbuildinfo
