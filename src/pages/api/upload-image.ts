@@ -26,7 +26,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
         try {
             const upload = await cloudinary.uploader.upload(file.filepath, {
-                folder: "PixelImageGoa/Gallery",
+                folder: "PixelBoardsProject",
                 tags: [tag],
                 resource_type: "image",
             });

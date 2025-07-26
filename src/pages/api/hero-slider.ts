@@ -11,7 +11,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     try {
         // Fetch up to 8 images from HeroSlider folder
         const resources = await cloudinary.search
-            .expression('folder:PixelImageGoa/Gallery')
+            .expression('folder:PixelBoardsProject')
             .sort_by("created_at", "desc")
             .max_results(8)
             .execute();
