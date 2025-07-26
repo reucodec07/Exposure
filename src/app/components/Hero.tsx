@@ -5,10 +5,36 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 
 const titleVariants = [
-    { line1: "Pixel Perfect",    line2: "LED Signs"            },
-    { line1: "Custom Creations",  line2: "That Captivate"       },
-    { line1: "Brilliant Glow",    line2: "Around the Clock"     },
-    { line1: "Your Vision",       line2: "Our Illumination"     },
+    { line1: "Pixel Perfect",      line2: "LED Signs"            },
+    { line1: "Custom Creations",   line2: "That Captivate"       },
+    { line1: "Brilliant Glow",     line2: "Around the Clock"     },
+    { line1: "Your Vision",        line2: "Our Illumination"     },
+    { line1: "Digital Dreams",     line2: "Made Reality"         },
+    { line1: "Bright Ideas",       line2: "Brighter Results"     },
+    { line1: "Neon Nights",        line2: "Electric Days"        },
+    { line1: "Stunning Signage",   line2: "Lasting Impact"       },
+    { line1: "Light Up",           line2: "Your Success"         },
+    { line1: "Vibrant Visuals",    line2: "Vivid Results"        },
+    { line1: "Glowing Graphics",   line2: "Growing Business"     },
+    { line1: "Radiant Designs",    line2: "Real Returns"         },
+    { line1: "Dazzling Displays",  line2: "Day and Night"        },
+    { line1: "Electric Impact",    line2: "Endless Possibilities"},
+    { line1: "Shining Brands",     line2: "Standout Success"     },
+    { line1: "Blazing Boards",     line2: "Bold Statements"      },
+    { line1: "Luminous Legacy",    line2: "Leading Technology"   },
+    { line1: "Sparkling Solutions", line2: "Superior Quality"    },
+    { line1: "Gleaming Graphics",  line2: "Great Visibility"     },
+    { line1: "Brilliant Brands",   line2: "Better Business"      },
+    { line1: "Electrifying Edge",  line2: "Expert Execution"     },
+    { line1: "Lustrous Lighting",  line2: "Lasting Impressions"  },
+    { line1: "Dynamic Displays",   line2: "Dramatic Results"     },
+    { line1: "Illuminated Ideas",  line2: "Inspired Outcomes"    },
+    { line1: "Powerful Pixels",    line2: "Professional Pride"   },
+    { line1: "Flashing Forward",   line2: "Future Ready"         },
+    { line1: "Beaming Brands",     line2: "Beautiful Results"    },
+    { line1: "Glittering Graphics", line2: "Guaranteed Quality"  },
+    { line1: "Shimmering Signs",   line2: "Spectacular Service"  },
+    { line1: "Twinkling Tech",     line2: "Total Transformation" }
 ];
 
 // Simple typewriter for one string, with optional start delay
