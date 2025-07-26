@@ -187,8 +187,7 @@ export default function Footer() {
                             </p>
                             <p className="text-slate-500 text-xs mt-1">
                                 Crafted with ❤️ by{" "}
-                                <span className="text-blue-600 font-medium">SetApartDesigns.com</span> x{" "}
-                                <span className="text-blue-600 font-medium">Designablebits.com</span>
+                                <span className="text-blue-600 font-medium">SetApartDesigns.com</span>
                             </p>
                         </div>
 
@@ -212,7 +211,7 @@ export default function Footer() {
             {/* Scroll to Top Button */}
             <button
                 onClick={scrollToTop}
-                className={`fixed bottom-6 left-6 w-12 h-12 bg-blue-600 hover:bg-blue-700 
+                className={`fixed bottom-6 left-20 w-12 h-12 bg-blue-600 hover:bg-blue-700 
                           text-white rounded-full shadow-lg hover:shadow-xl 
                           transition-all duration-300 z-40 hover:scale-110 active:scale-95
                           ${showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
