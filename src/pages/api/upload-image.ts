@@ -1,39 +1,51 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-import { v2 as cloudinary } from "cloudinary";
-import formidable from "formidable";
-import fs from "fs";
-
-// Disable Next.js body parsing to handle multipart/form-data
-export const config = { api: { bodyParser: false } };
+// src/pages/api/upload-image.ts
+import { NextApiRequest, NextApiResponse } from 'next';
+import formidable from 'formidable';
+import { v2 as cloudinary } from 'cloudinary';
 
 cloudinary.config({
-    cloud_name: process.env.CLOUDINARY_CLOUD_NAME!,
-    api_key: process.env.CLOUDINARY_API_KEY!,
-    api_secret: process.env.CLOUDINARY_API_SECRET!,
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-type Data = { url?: string; error?: string };
+export const config = {
+    api: {
+        bodyParser: false,
+    },
+};
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
-    if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+    if (req.method !== 'POST') {
+        return res.status(405).json({ error: 'Method not allowed' });
+    }
 
-    const form = new formidable.IncomingForm();
-    form.parse(req, async (err, fields, files) => {
-        if (err || !files.image) return res.status(400).json({ error: "Invalid upload" });
+    try {
+        const form = formidable({});
+        const [fields, files] = await form.parse(req);
 
-        const file = Array.isArray(files.image) ? files.image[0] : files.image;
-        const tag = typeof fields.tag === "string" ? fields.tag : "Other";
+        const file = Array.isArray(files.file) ? files.file[0] : files.file;
 
-        try {
-            const upload = await cloudinary.uploader.upload(file.filepath, {
-                folder: "PixelBoardsProject",
-                tags: [tag],
-                resource_type: "image",
-            });
-            fs.unlinkSync(file.filepath); // Clean up
-            return res.status(200).json({ url: upload.secure_url });
-        } catch (e: any) {
-            return res.status(500).json({ error: e.message || "Failed to upload" });
+        if (!file) {
+            return res.status(400).json({ error: 'No file provided' });
         }
-    });
+
+        const result = await cloudinary.uploader.upload(file.filepath, {
+            folder: 'PixelImageGoa/Gallery',
+            tags: Array.isArray(fields.tags) ? fields.tags : [fields.tags].filter(Boolean),
+            context: {
+                custom: {
+                    title: Array.isArray(fields.title) ? fields.title[0] : fields.title,
+                    description: Array.isArray(fields.description) ? fields.description[0] : fields.description,
+                    client: Array.isArray(fields.client) ? fields.client[0] : fields.client,
+                }
+            }
+        });
+
+        res.status(200).json({ result });
+    } catch (e) {
+        // Properly handle unknown error type
+        const errorMessage = e instanceof Error ? e.message : 'Failed to upload';
+        return res.status(500).json({ error: errorMessage });
+    }
 }

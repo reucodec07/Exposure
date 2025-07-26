@@ -194,7 +194,7 @@ export default function Services() {
                 <div className="text-center bg-gradient-to-r from-blue-600 to-blue-800
                               rounded-3xl p-8 lg:p-12 text-white">
                     <h3 className="text-2xl lg:text-3xl font-bold mb-4">
-                        Can't find what you're looking for?
+                        Can&#39;t find what you&#39;re looking for?
                     </h3>
                     <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
                         We offer custom solutions tailored to your specific needs

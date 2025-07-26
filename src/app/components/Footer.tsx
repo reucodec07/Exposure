@@ -57,10 +57,10 @@ export default function Footer() {
                         {/* Company Info */}
                         <div className="lg:col-span-2 space-y-6">
                             <div>
-                                <h3 className="text-2xl font-bold text-blue-600 mb-2">Pixel Image Goa</h3>
+                                <h3 className="text-2xl font-bold text-blue-600 mb-2">Pixel Boards</h3>
                                 <p className="text-blue-700 font-medium mb-4">LED Signage Experts</p>
                                 <p className="text-slate-600 leading-relaxed max-w-md">
-                                    Goa's premier LED signage and display solutions expert.
+                                    Professional LED signage and display solutions expert.
                                     We bring your vision to light with cutting-edge technology
                                     and expert craftsmanship.
                                 </p>
@@ -119,9 +119,9 @@ export default function Footer() {
                                     <FaPhoneAlt className="text-blue-500 text-sm mt-1 flex-shrink-0" />
                                     <div>
                                         <span className="text-slate-500 text-xs uppercase tracking-wide block">Call Us</span>
-                                        <a href="tel:+919850718413"
+                                        <a href="tel:+441234567890"
                                            className="text-slate-700 hover:text-blue-600 font-medium transition-colors duration-200">
-                                            +91 98507 18413
+                                            +44 1234567890
                                         </a>
                                     </div>
                                 </div>
@@ -130,9 +130,9 @@ export default function Footer() {
                                     <FaEnvelope className="text-blue-500 text-sm mt-1 flex-shrink-0" />
                                     <div>
                                         <span className="text-slate-500 text-xs uppercase tracking-wide block">Email</span>
-                                        <a href="mailto:pixelimagegoa@gmail.com"
+                                        <a href="mailto:mockprojects@setapartprojects.com"
                                            className="text-slate-700 hover:text-blue-600 font-medium transition-colors duration-200">
-                                            pixelimagegoa@gmail.com
+                                            mockprojects@setapartprojects.com
                                         </a>
                                     </div>
                                 </div>
@@ -141,7 +141,7 @@ export default function Footer() {
                                     <FaMapMarkerAlt className="text-blue-500 text-sm mt-1 flex-shrink-0" />
                                     <div>
                                         <span className="text-slate-500 text-xs uppercase tracking-wide block">Service Area</span>
-                                        <span className="text-slate-700 font-medium">All Across Goa</span>
+                                        <span className="text-slate-700 font-medium">United Kingdom</span>
                                     </div>
                                 </div>
                             </div>
@@ -154,7 +154,7 @@ export default function Footer() {
                                         { icon: FaFacebookF, href: "#", color: "hover:bg-blue-600" },
                                         { icon: FaInstagram, href: "#", color: "hover:bg-pink-600" },
                                         { icon: FaLinkedinIn, href: "#", color: "hover:bg-blue-700" },
-                                        { icon: FaWhatsapp, href: "https://wa.me/919850718413", color: "hover:bg-green-600" },
+                                        { icon: FaWhatsapp, href: "https://wa.me/441234567890", color: "hover:bg-green-600" },
                                     ].map((social, index) => (
                                         <a
                                             key={index}
@@ -183,7 +183,7 @@ export default function Footer() {
                     <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                         <div className="text-center md:text-left">
                             <p className="text-slate-600 text-sm">
-                                &copy; {currentYear} Pixel Image Goa. All rights reserved.
+                                &copy; {currentYear} Pixel Boards. All rights reserved.
                             </p>
                             <p className="text-slate-500 text-xs mt-1">
                                 Crafted with ❤️ by{" "}

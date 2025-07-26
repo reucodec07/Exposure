@@ -1,7 +1,7 @@
 //app/components/About.tsx
 "use client";
 
-import { FaCheckCircle, FaAward, FaClock, FaShieldAlt, FaStar, FaMapMarkerAlt } from "react-icons/fa";
+import { FaCheckCircle, FaAward, FaClock, FaShieldAlt } from "react-icons/fa";
 
 export default function About() {
     return (
@@ -25,7 +25,7 @@ export default function About() {
                     </div>
 
                     <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                        <span className="text-blue-600 block">Illuminating Goa</span>
+                        <span className="text-blue-600 block">Illuminating Businesses</span>
                         <span className="text-slate-800 block">Since Years</span>
                     </h2>
 
@@ -37,8 +37,8 @@ export default function About() {
                     <div className="space-y-8">
                         <div className="prose prose-lg max-w-none">
                             <p className="text-slate-600 leading-relaxed text-lg">
-                                <span className="text-blue-600 font-bold text-xl">Pixel Image Goa</span> is
-                                Goa's trusted expert in cutting-edge signage solutions that make your
+                                <span className="text-blue-600 font-bold text-xl">Pixel Boards</span> is
+                                your trusted expert in cutting-edge signage solutions that make your
                                 business shine brighter than ever before.
                             </p>
                         </div>
@@ -73,7 +73,7 @@ export default function About() {
 
                         <div className="bg-blue-50 border border-blue-200 rounded-2xl p-6">
                             <p className="text-blue-800 font-medium italic text-lg text-center">
-                                "No project is too big or too small – we bring your vision to light!"
+                                &#34;No project is too big or too small – we bring your vision to light!&#34;
                             </p>
                         </div>
                     </div>
@@ -84,7 +84,7 @@ export default function About() {
                             { number: "500+", label: "Projects Completed", icon: "📈" },
                             { number: "24/7", label: "Sign Visibility", icon: "🌟" },
                             { number: "100%", label: "Client Satisfaction", icon: "😊" },
-                            { number: "Goa", label: "Wide Coverage", icon: "🗺️" },
+                            { number: "UK", label: "Wide Coverage", icon: "🗺️" },
                         ].map((stat, index) => (
                             <div key={index}
                                  className="bg-white border border-blue-200 rounded-2xl p-6 text-center
@@ -108,7 +108,7 @@ export default function About() {
                 <div className="bg-gradient-to-br from-blue-50 to-white border border-blue-200 rounded-3xl p-8 lg:p-12 mb-16">
                     <div className="flex items-center justify-center space-x-3 mb-8">
                         <FaCheckCircle className="text-blue-600 text-xl" />
-                        <h3 className="text-2xl lg:text-3xl font-bold text-slate-800">Why Choose Pixel Image Goa?</h3>
+                        <h3 className="text-2xl lg:text-3xl font-bold text-slate-800">Why Choose Pixel Boards?</h3>
                     </div>
 
                     <div className="max-w-4xl mx-auto">

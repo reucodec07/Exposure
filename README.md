@@ -53,5 +53,4 @@ Photo by Franco Debartolo https://unsplash.com/photos/three-shelves-with-vases-a
 Photo by Hatice Baran: https://www.pexels.com/photo/coca-cola-billboard-by-roadside-in-city-13986019/
 Photo by El gringo photo: https://www.pexels.com/photo/signage-in-stadium-under-white-sky-10287251/
 Photo by Isaque Pereira: https://www.pexels.com/photo/yellow-arrow-led-signage-394377/
-
-
+Photo by Google DeepMind: https://www.pexels.com/photo/an-artist-s-illustration-of-artificial-intelligence-ai-this-image-depicts-how-ai-could-help-understand-ecosystems-and-identify-species-it-was-created-by-nidia-dias-as-part-of-the-visua-18069362/

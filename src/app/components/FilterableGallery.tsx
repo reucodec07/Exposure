@@ -3,6 +3,7 @@
 
 import { useEffect, useState } from "react";
 import { Dialog } from "@headlessui/react";
+import Image from "next/image";
 import { FaExpandAlt, FaTimes, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 type ImageType = {
@@ -125,12 +126,15 @@ export default function FilterableGallery() {
                                               transition-all duration-300 hover:-translate-y-2">
 
                                     <div className="relative aspect-square overflow-hidden">
-                                        <img
+                                        <Image
                                             src={img.secure_url}
                                             alt={`Project ${idx + 1}`}
                                             className="w-full h-full object-cover group-hover:scale-110
                                                      transition-transform duration-500"
                                             loading="lazy"
+                                            width={400}
+                                            height={400}
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
                                         />
 
                                         {/* Overlay */}
@@ -219,10 +223,13 @@ export default function FilterableGallery() {
                             <div className="flex flex-col lg:flex-row h-full max-h-[90vh]">
                                 {/* Image Section */}
                                 <div className="flex-1 relative bg-slate-100 min-h-[400px] lg:min-h-[600px]">
-                                    <img
+                                    <Image
                                         src={images[current]?.secure_url}
                                         alt={`Project ${current + 1}`}
-                                        className="w-full h-full object-contain"
+                                        width={800}
+                                        height={600}
+                                        className="object-contain"
+                                        sizes="100vw"
                                     />
 
                                     {/* Navigation Arrows */}

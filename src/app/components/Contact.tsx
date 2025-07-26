@@ -1,5 +1,4 @@
 //app/components/Contact.tsx
-
 "use client";
 
 import {
@@ -35,7 +34,7 @@ export default function Contact() {
                     </div>
 
                     <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                        <span className="text-blue-600">Let's Light Up</span>
+                        <span className="text-blue-600">Let&#39;s Light Up</span>
                         <span className="text-slate-800"> Your Business</span>
                     </h2>
 
@@ -54,15 +53,15 @@ export default function Contact() {
                         <div className="space-y-6">
                             {[
                                 {
-                                    href: "tel:+919850718413",
+                                    href: "tel:+441234567890",
                                     icon: FaPhoneAlt,
                                     label: "Call Us Directly",
-                                    value: "+91 98507 18413",
+                                    value: "+44 1234567890",
                                     sub: "Mon–Sat: 9:00 AM – 7:00 PM",
                                     color: "blue"
                                 },
                                 {
-                                    href: "https://wa.me/919850718413",
+                                    href: "https://wa.me/441234567890",
                                     icon: FaWhatsapp,
                                     label: "WhatsApp Chat",
                                     value: "Quick Response",
@@ -70,10 +69,10 @@ export default function Contact() {
                                     color: "green"
                                 },
                                 {
-                                    href: "mailto:pixelimagegoa@gmail.com",
+                                    href: "mailto:mockprojects@setapartprojects.com",
                                     icon: FaEnvelope,
                                     label: "Email Us",
-                                    value: "pixelimagegoa@gmail.com",
+                                    value: "mockprojects@setapartprojects.com",
                                     sub: "We'll respond within 24 hours",
                                     color: "purple"
                                 }
@@ -116,8 +115,8 @@ export default function Contact() {
                                 </div>
                                 <div>
                                     <span className="text-blue-700 text-sm font-medium block">Service Area</span>
-                                    <h4 className="text-blue-900 font-bold text-lg">All Across Goa</h4>
-                                    <span className="text-blue-700 text-sm">North Goa & South Goa</span>
+                                    <h4 className="text-blue-900 font-bold text-lg">United Kingdom</h4>
+                                    <span className="text-blue-700 text-sm">Professional Installation</span>
                                 </div>
                             </div>
                         </div>
@@ -162,19 +161,19 @@ export default function Contact() {
                                 Get your free quote and consultation today!
                             </p>
                             <div className="flex flex-col sm:flex-row gap-3">
-                                <a href="tel:+919850718413"
-                                   className="flex items-center justify-center space-x-2 px-4 py-3
-                                            bg-blue-600 hover:bg-blue-700 text-white font-semibold
+                                <a href="tel:+441234567890"
+                                   className="flex items-center justify-center space-x-2 px-4 py-3 text-white
+                                            bg-blue-300 hover:bg-blue-200 font-semibold
                                             rounded-xl transition-colors duration-200">
                                     <FaPhoneAlt className="w-4 h-4" />
                                     <span>Call Now</span>
                                 </a>
                                 <a
-                                    href="https://wa.me/919850718413"
+                                    href="https://wa.me/441234567890"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center justify-center space-x-2 px-4 py-3
-                                             bg-green-600 hover:bg-green-700 text-white font-semibold
+                                             bg-blue-100 hover:bg-blue-200 text-white font-semibold
                                              rounded-xl transition-colors duration-200"
                                 >
                                     <FaWhatsapp className="w-4 h-4" />
@@ -216,7 +215,7 @@ export default function Contact() {
                         Take the first step towards transforming your business visibility
                     </p>
                     <div className="flex flex-col sm:flex-row justify-center gap-4">
-                        <a href="tel:+919850718413"
+                        <a href="tel:+441234567890"
                            className="inline-flex items-center space-x-3 px-8 py-4 bg-white text-blue-700
                                     font-semibold rounded-xl hover:bg-blue-50 transition-colors duration-200
                                     hover:scale-105 active:scale-95 shadow-lg">
@@ -224,10 +223,10 @@ export default function Contact() {
                             <span>Call Now</span>
                         </a>
                         <a
-                            href="https://wa.me/919850718413"
+                            href="https://wa.me/441234567890"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center space-x-3 px-8 py-4 bg-green-600 hover:bg-green-700
+                            className="inline-flex items-center space-x-3 px-8 py-4 bg-white hover:bg-blue-100
                                      text-white font-semibold rounded-xl transition-colors duration-200
                                      hover:scale-105 active:scale-95 shadow-lg"
                         >
