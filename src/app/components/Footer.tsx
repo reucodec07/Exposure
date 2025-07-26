@@ -1,3 +1,5 @@
+//app/components/Footer.tsx
+
 "use client";
 
 import {
@@ -13,8 +15,24 @@ import {
     FaAward,
     FaClock
 } from "react-icons/fa";
+import { useState, useEffect } from "react";
 
 export default function Footer() {
+    const [showScrollTop, setShowScrollTop] = useState(false);
+
+    useEffect(() => {
+        const toggleVisibility = () => {
+            if (window.pageYOffset > 300) {
+                setShowScrollTop(true);
+            } else {
+                setShowScrollTop(false);
+            }
+        };
+
+        window.addEventListener('scroll', toggleVisibility);
+        return () => window.removeEventListener('scroll', toggleVisibility);
+    }, []);
+
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
@@ -22,103 +40,136 @@ export default function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="footer">
+        <footer className="relative bg-gradient-to-br from-slate-50 to-blue-50 overflow-hidden">
+            {/* Background Pattern */}
+            <div className="absolute inset-0">
+                <div
+                    className="absolute inset-0 opacity-20 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)]"
+                    style={{ backgroundSize: '80px 80px' }}
+                />
+            </div>
+
             {/* Main Footer Content */}
-            <div className="footer-main">
-                <div className="footer-container">
-                    <div className="footer-grid">
+            <div className="relative z-10 py-16 lg:py-20">
+                <div className="max-w-7xl mx-auto px-6 lg:px-8">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+
                         {/* Company Info */}
-                        <div className="footer-section">
-                            <div className="footer-logo">
-                                <h3 className="footer-brand-name">Pixel Image Goa</h3>
-                                <p className="footer-tagline">LED Signage Experts</p>
+                        <div className="lg:col-span-2 space-y-6">
+                            <div>
+                                <h3 className="text-2xl font-bold text-blue-600 mb-2">Pixel Image Goa</h3>
+                                <p className="text-blue-700 font-medium mb-4">LED Signage Experts</p>
+                                <p className="text-slate-600 leading-relaxed max-w-md">
+                                    Goa's premier LED signage and display solutions expert.
+                                    We bring your vision to light with cutting-edge technology
+                                    and expert craftsmanship.
+                                </p>
                             </div>
-                            <p className="footer-description">
-                                Goa's premier LED signage and display solutions expert.
-                                We bring your vision to light with cutting-edge technology
-                                and expert craftsmanship.
-                            </p>
-                            <div className="footer-highlights">
-                                <div className="footer-highlight">
-                                    <FaStar className="footer-highlight-icon" />
-                                    <span>5.0 Rating</span>
+
+                            <div className="flex flex-wrap gap-6">
+                                <div className="flex items-center space-x-2 text-slate-600">
+                                    <FaStar className="text-yellow-500 text-sm" />
+                                    <span className="text-sm font-medium">5.0 Rating</span>
                                 </div>
-                                <div className="footer-highlight">
-                                    <FaAward className="footer-highlight-icon" />
-                                    <span>500+ Projects</span>
+                                <div className="flex items-center space-x-2 text-slate-600">
+                                    <FaAward className="text-blue-500 text-sm" />
+                                    <span className="text-sm font-medium">500+ Projects</span>
                                 </div>
-                                <div className="footer-highlight">
-                                    <FaClock className="footer-highlight-icon" />
-                                    <span>Fast Delivery</span>
+                                <div className="flex items-center space-x-2 text-slate-600">
+                                    <FaClock className="text-green-500 text-sm" />
+                                    <span className="text-sm font-medium">Fast Delivery</span>
                                 </div>
                             </div>
                         </div>
 
                         {/* Quick Links */}
-                        <div className="footer-section">
-                            <h4 className="footer-section-title">Quick Links</h4>
-                            <ul className="footer-links">
-                                <li><a href="#about" className="footer-link">About Us</a></li>
-                                <li><a href="#services" className="footer-link">Our Services</a></li>
-                                <li><a href="#gallery" className="footer-link">Portfolio</a></li>
-                                <li><a href="#reviews" className="footer-link">Client Reviews</a></li>
-                                <li><a href="#contact" className="footer-link">Contact Us</a></li>
+                        <div>
+                            <h4 className="text-lg font-bold text-slate-800 mb-6 relative">
+                                Quick Links
+                                <div className="absolute bottom-[-8px] left-0 w-12 h-0.5 bg-blue-500 rounded-full" />
+                            </h4>
+                            <ul className="space-y-3">
+                                {[
+                                    { name: "About Us", href: "#about" },
+                                    { name: "Our Services", href: "#services" },
+                                    { name: "Portfolio", href: "#gallery" },
+                                    { name: "Client Reviews", href: "#reviews" },
+                                    { name: "Contact Us", href: "#contact" },
+                                ].map((link, index) => (
+                                    <li key={index}>
+                                        <a href={link.href}
+                                           className="text-slate-600 hover:text-blue-600 transition-colors duration-200
+                                                    hover:translate-x-1 transform inline-block">
+                                            {link.name}
+                                        </a>
+                                    </li>
+                                ))}
                             </ul>
                         </div>
 
                         {/* Contact Info */}
-                        <div className="footer-section">
-                            <h4 className="footer-section-title">Get In Touch</h4>
-                            <div className="footer-contact-info">
-                                <div className="footer-contact-item">
-                                    <FaPhoneAlt className="footer-contact-icon" />
+                        <div>
+                            <h4 className="text-lg font-bold text-slate-800 mb-6 relative">
+                                Get In Touch
+                                <div className="absolute bottom-[-8px] left-0 w-12 h-0.5 bg-blue-500 rounded-full" />
+                            </h4>
+
+                            <div className="space-y-4 mb-6">
+                                <div className="flex items-start space-x-3">
+                                    <FaPhoneAlt className="text-blue-500 text-sm mt-1 flex-shrink-0" />
                                     <div>
-                                        <span className="footer-contact-label">Call Us</span>
-                                        <a href="tel:+919850718413" className="footer-contact-value">
+                                        <span className="text-slate-500 text-xs uppercase tracking-wide block">Call Us</span>
+                                        <a href="tel:+919850718413"
+                                           className="text-slate-700 hover:text-blue-600 font-medium transition-colors duration-200">
                                             +91 98507 18413
                                         </a>
                                     </div>
                                 </div>
-                                <div className="footer-contact-item">
-                                    <FaEnvelope className="footer-contact-icon" />
+
+                                <div className="flex items-start space-x-3">
+                                    <FaEnvelope className="text-blue-500 text-sm mt-1 flex-shrink-0" />
                                     <div>
-                                        <span className="footer-contact-label">Email</span>
-                                        <a href="mailto:pixelimagegoa@gmail.com" className="footer-contact-value">
+                                        <span className="text-slate-500 text-xs uppercase tracking-wide block">Email</span>
+                                        <a href="mailto:pixelimagegoa@gmail.com"
+                                           className="text-slate-700 hover:text-blue-600 font-medium transition-colors duration-200">
                                             pixelimagegoa@gmail.com
                                         </a>
                                     </div>
                                 </div>
-                                <div className="footer-contact-item">
-                                    <FaMapMarkerAlt className="footer-contact-icon" />
+
+                                <div className="flex items-start space-x-3">
+                                    <FaMapMarkerAlt className="text-blue-500 text-sm mt-1 flex-shrink-0" />
                                     <div>
-                                        <span className="footer-contact-label">Service Area</span>
-                                        <span className="footer-contact-value">All Across Goa</span>
+                                        <span className="text-slate-500 text-xs uppercase tracking-wide block">Service Area</span>
+                                        <span className="text-slate-700 font-medium">All Across Goa</span>
                                     </div>
                                 </div>
                             </div>
 
                             {/* Social Links */}
-                            <div className="footer-social">
-                                <h5 className="footer-social-title">Follow Us</h5>
-                                <div className="footer-social-links">
-                                    <a href="#" className="footer-social-link" aria-label="Facebook">
-                                        <FaFacebookF />
-                                    </a>
-                                    <a href="#" className="footer-social-link" aria-label="Instagram">
-                                        <FaInstagram />
-                                    </a>
-                                    <a href="#" className="footer-social-link" aria-label="LinkedIn">
-                                        <FaLinkedinIn />
-                                    </a>
-                                    <a
-                                        href="https://wa.me/919850718413"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="footer-social-link whatsapp"
-                                        aria-label="WhatsApp"
-                                    >
-                                        <FaWhatsapp />
-                                    </a>
+                            <div>
+                                <h5 className="text-sm font-semibold text-slate-800 mb-3">Follow Us</h5>
+                                <div className="flex space-x-3">
+                                    {[
+                                        { icon: FaFacebookF, href: "#", color: "hover:bg-blue-600" },
+                                        { icon: FaInstagram, href: "#", color: "hover:bg-pink-600" },
+                                        { icon: FaLinkedinIn, href: "#", color: "hover:bg-blue-700" },
+                                        { icon: FaWhatsapp, href: "https://wa.me/919850718413", color: "hover:bg-green-600" },
+                                    ].map((social, index) => (
+                                        <a
+                                            key={index}
+                                            href={social.href}
+                                            target={social.href.startsWith("http") ? "_blank" : undefined}
+                                            rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                                            className={`w-10 h-10 bg-white border border-blue-200 rounded-full 
+                                                     flex items-center justify-center text-slate-600 
+                                                     transition-all duration-200 hover:text-white hover:scale-110 
+                                                     hover:shadow-lg ${social.color}`}
+                                            aria-label={social.icon.name}
+                                        >
+                                            <social.icon className="w-4 h-4" />
+                                        </a>
+                                    ))}
                                 </div>
                             </div>
                         </div>
@@ -127,21 +178,32 @@ export default function Footer() {
             </div>
 
             {/* Footer Bottom */}
-            <div className="footer-bottom">
-                <div className="footer-container">
-                    <div className="footer-bottom-content">
-                        <div className="footer-copyright">
-                            <p>&copy; {currentYear} Pixel Image Goa. All rights reserved.</p>
-                            <p className="footer-copyright-sub">
-                                Crafted with ❤️ by SetApartDesigns.com x Designablebits.com
+            <div className="relative z-10 border-t border-blue-200 bg-white/80 backdrop-blur-sm py-6">
+                <div className="max-w-7xl mx-auto px-6 lg:px-8">
+                    <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                        <div className="text-center md:text-left">
+                            <p className="text-slate-600 text-sm">
+                                &copy; {currentYear} Pixel Image Goa. All rights reserved.
+                            </p>
+                            <p className="text-slate-500 text-xs mt-1">
+                                Crafted with ❤️ by{" "}
+                                <span className="text-blue-600 font-medium">SetApartDesigns.com</span> x{" "}
+                                <span className="text-blue-600 font-medium">Designablebits.com</span>
                             </p>
                         </div>
-                        <div className="footer-bottom-links">
-                            <a href="#" className="footer-bottom-link">Privacy Policy</a>
-                            <span className="footer-divider">•</span>
-                            <a href="#" className="footer-bottom-link">Terms of Service</a>
-                            <span className="footer-divider">•</span>
-                            <a href="#contact" className="footer-bottom-link">Get Quote</a>
+
+                        <div className="flex items-center space-x-6 text-sm">
+                            <a href="#" className="text-slate-600 hover:text-blue-600 transition-colors duration-200">
+                                Privacy Policy
+                            </a>
+                            <span className="text-slate-400">•</span>
+                            <a href="#" className="text-slate-600 hover:text-blue-600 transition-colors duration-200">
+                                Terms of Service
+                            </a>
+                            <span className="text-slate-400">•</span>
+                            <a href="#contact" className="text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200">
+                                Get Quote
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -150,15 +212,14 @@ export default function Footer() {
             {/* Scroll to Top Button */}
             <button
                 onClick={scrollToTop}
-                className="footer-scroll-top"
+                className={`fixed bottom-6 left-6 w-12 h-12 bg-blue-600 hover:bg-blue-700 
+                          text-white rounded-full shadow-lg hover:shadow-xl 
+                          transition-all duration-300 z-40 hover:scale-110 active:scale-95
+                          ${showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
                 aria-label="Scroll to top"
             >
-                <FaArrowUp />
+                <FaArrowUp className="w-4 h-4 mx-auto" />
             </button>
-
-            {/* Background Effects */}
-            <div className="footer-bg-grid" />
-            <div className="footer-bg-glow" />
         </footer>
     );
 }

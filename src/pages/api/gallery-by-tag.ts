@@ -17,7 +17,7 @@ cloudinary.config({
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const { tag } = req.query;
-    const folder = "PixelImageGoa/Gallery";
+    const folder = "PixelBoardsProject";
     let expression = `folder:${folder}`;
 
     if (tag && tag !== "All") {
