@@ -27,7 +27,6 @@ export default function Page() {
 
     useEffect(() => {
         if (isLoggedIn) fetchGallery();
-        // eslint-disable-next-line
     }, [isLoggedIn]);
 
     // 🟢 2. NO RETURNS above this line

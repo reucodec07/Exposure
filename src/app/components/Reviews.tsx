@@ -110,7 +110,7 @@ export default function ReviewCarousel() {
                     </h2>
 
                     <p className="text-lg text-slate-600 max-w-3xl mx-auto mb-8">
-                        Don't just take our word for it—hear what our satisfied clients say about our work
+                        Don&#39;t just take our word for it—hear what our satisfied clients say about our work
                     </p>
 
                     <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-blue-800 mx-auto rounded-full" />
@@ -187,7 +187,7 @@ export default function ReviewCarousel() {
                                     {/* Content */}
                                     <div className="mb-6 relative z-10">
                                         <p className="text-slate-700 leading-relaxed italic">
-                                            "{review.text}"
+                                            &#34;{review.text}&#34;
                                         </p>
                                     </div>
 
@@ -259,7 +259,7 @@ export default function ReviewCarousel() {
                         Ready to join our growing list of satisfied customers?
                     </h3>
                     <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
-                        Let's discuss how we can bring your vision to life
+                        Let&#39;s discuss how we can bring your vision to life
                     </p>
                     <a href="#contact"
                        className="inline-flex items-center px-8 py-4 bg-white text-blue-700

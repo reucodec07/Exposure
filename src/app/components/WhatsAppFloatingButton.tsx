@@ -35,10 +35,9 @@ export default function WhatsAppFloatingButton() {
                     <div className="flex items-center space-x-3">
                         <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-700
                                       rounded-full flex items-center justify-center text-white font-bold text-sm">
-                            PG
                         </div>
                         <div>
-                            <h4 className="font-semibold text-slate-800">Pixel Image Goa</h4>
+                            <h4 className="font-semibold text-slate-800">Pixel Boards</h4>
                             <span className="text-slate-500 text-xs">Typically replies instantly</span>
                         </div>
                     </div>
@@ -46,7 +45,7 @@ export default function WhatsAppFloatingButton() {
                     <div className="flex items-start space-x-3">
                         <FaComment className="text-blue-500 text-lg mt-1 flex-shrink-0" />
                         <p className="text-slate-700 text-sm leading-relaxed">
-                            Hi! 👋 Ready to illuminate your business? Let's chat about your signage needs!
+                            Hi! 👋 Ready to illuminate your business? Let&#39;s chat about your signage needs!
                         </p>
                     </div>
                 </div>
@@ -62,11 +61,11 @@ export default function WhatsAppFloatingButton() {
 
             {/* Main WhatsApp Button */}
             <a
-                href="https://wa.me/919850718413?text=Hi%20Pixel%20Image%20Goa!%20I'm%20interested%20in%20your%20LED%20signage%20services.%20Can%20you%20please%20provide%20more%20information?"
+                href="https://wa.me/441234567890?text=Hi%20Pixel%20Boards!%20I'm%20interested%20in%20your%20LED%20signage%20services.%20Can%20you%20please%20provide%20more%20information?"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="relative flex items-center justify-center w-16 h-16
-                         bg-gradient-to-br from-green-500 to-green-600 hover:from-green-600 hover:to-green-700
+                         bg-gradient-to-br from-green-500 to-blue-800 hover:from-green-600 hover:to-blue-900
                          rounded-full shadow-2xl shadow-green-500/30 hover:shadow-green-500/50
                          transition-all duration-300 hover:scale-110 active:scale-95 group
                          animate-bounce hover:animate-none"
@@ -77,7 +76,7 @@ export default function WhatsAppFloatingButton() {
                 <FaWhatsapp className="w-8 h-8 text-white" />
 
                 {/* Pulsing ring effect */}
-                <div className="absolute inset-0 rounded-full border-4 border-green-400
+                <div className="absolute inset-0 rounded-full border-4 border-blue-800
                               animate-ping opacity-75 group-hover:opacity-0" />
 
                 {/* Notification Badge */}
