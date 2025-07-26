@@ -109,7 +109,7 @@ export default function MockProjectPopup() {
                             Got It!
                         </button>
                         <a
-                            href="https://setapartdesigns.com"
+                            href="https://setapartdesigns.co.uk"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex-1 px-4 py-3 bg-white hover:bg-blue-50 text-blue-700
