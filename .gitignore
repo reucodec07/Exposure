@@ -43,4 +43,12 @@ next-env.d.ts
 .idea/
 .idea
 
-tsconfig.tsbuildinfo
+tsconfig.tsbuildinfonode_modules/
+.vscode/
+build/
+dist/
+.gradle/
+local.properties
+.next/
+.venv/
+*.log
