@@ -29,12 +29,12 @@ export default function Contact() {
                     </div>
 
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 px-2">
-                        <span className="text-blue-600">Let&#39;s Light Up</span>
-                        <span className="text-slate-800"> Your Business</span>
+                        <span className="text-blue-600">Let&#39;s Capture</span>
+                        <span className="text-slate-800"> Your Moments</span>
                     </h2>
 
                     <p className="text-base sm:text-lg text-slate-600 max-w-3xl mx-auto mb-6 sm:mb-8 px-4">
-                        Ready to make your brand shine? Get in touch for a free consultation and quote
+                        Ready to create stunning visuals? Get in touch for a free consultation and quote
                     </p>
 
                     <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-blue-600 to-blue-800 mx-auto rounded-full" />
@@ -114,7 +114,7 @@ export default function Contact() {
                                 <div>
                                     <div className="text-blue-700 text-xs sm:text-sm font-medium mb-1">Service Area</div>
                                     <h4 className="text-blue-900 font-bold text-base sm:text-lg">United Kingdom</h4>
-                                    <div className="text-blue-700 text-xs sm:text-sm mt-1">Professional Installation</div>
+                                    <div className="text-blue-700 text-xs sm:text-sm mt-1">Professional Coverage</div>
                                 </div>
                             </div>
                         </div>
@@ -185,11 +185,11 @@ export default function Contact() {
                             </div>
                             <div className="space-y-2 sm:space-y-3">
                                 {[
-                                    "Free consultation & design mockups",
+                                    "Free consultation & shoot planning",
                                     "Transparent pricing with no hidden costs",
-                                    "Fast 5-7 day turnaround time",
-                                    "Professional installation included",
-                                    "1-year warranty on all products"
+                                    "Fast turnaround time for edited photos",
+                                    "Professional editing included",
+                                    "Secure backup of your photos"
                                 ].map((feature, index) => (
                                     <div key={index} className="flex items-start">
                                         <FaCheckCircle className="text-blue-500 text-sm flex-shrink-0 mt-1 mr-2 sm:mr-3" />
