@@ -81,7 +81,7 @@ export default function Navbar() {
                         >
                             <Image
                                 src="https://res.cloudinary.com/dub5eqaqo/image/upload/v1753470111/pixelboards_pcnjlb.png"
-                                alt="Pixel Boards"
+                                alt="Exposure"
                                 fill
                                 className="object-contain"
                                 priority
@@ -90,10 +90,10 @@ export default function Navbar() {
                         {/* Logo text - only on tablet/desktop */}
                         <div className="hidden md:block">
                             <h1 className="text-lg font-bold text-blue-900 leading-tight">
-                                Pixel Boards
+                                Exposure
                             </h1>
                             <p className="text-xs text-blue-600 font-medium">
-                                Billboards and more...
+                                Photography and more...
                             </p>
                         </div>
                     </div>

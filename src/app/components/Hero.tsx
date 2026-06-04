@@ -5,36 +5,36 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 
 const titleVariants = [
-    { line1: "Pixel Perfect",      line2: "LED Signs"            },
-    { line1: "Custom Creations",   line2: "That Captivate"       },
-    { line1: "Brilliant Glow",     line2: "Around the Clock"     },
-    { line1: "Your Vision",        line2: "Our Illumination"     },
+    { line1: "Timeless Moments",   line2: "Captured Beautifully" },
+    { line1: "Stunning Portraits", line2: "That Captivate"       },
+    { line1: "Visual Stories",     line2: "Told With Passion"    },
+    { line1: "Your Vision",        line2: "Our Lens"             },
     { line1: "Digital Dreams",     line2: "Made Reality"         },
-    { line1: "Bright Ideas",       line2: "Brighter Results"     },
-    { line1: "Neon Nights",        line2: "Electric Days"        },
-    { line1: "Stunning Signage",   line2: "Lasting Impact"       },
-    { line1: "Light Up",           line2: "Your Success"         },
+    { line1: "Beautiful Light",    line2: "Brilliant Results"    },
+    { line1: "Candid Shots",       line2: "Genuine Emotions"     },
+    { line1: "Stunning Images",    line2: "Lasting Impact"       },
+    { line1: "Focus On",           line2: "Your Success"         },
     { line1: "Vibrant Visuals",    line2: "Vivid Results"        },
-    { line1: "Glowing Graphics",   line2: "Growing Business"     },
+    { line1: "Creative Focus",     line2: "Growing Business"     },
     { line1: "Radiant Designs",    line2: "Real Returns"         },
     { line1: "Dazzling Displays",  line2: "Day and Night"        },
-    { line1: "Electric Impact",    line2: "Endless Possibilities"},
+    { line1: "Artistic Impact",    line2: "Endless Possibilities"},
     { line1: "Shining Brands",     line2: "Standout Success"     },
-    { line1: "Blazing Boards",     line2: "Bold Statements"      },
-    { line1: "Luminous Legacy",    line2: "Leading Technology"   },
-    { line1: "Sparkling Solutions", line2: "Superior Quality"    },
-    { line1: "Gleaming Graphics",  line2: "Great Visibility"     },
+    { line1: "Perfect Frames",     line2: "Bold Statements"      },
+    { line1: "Visual Legacy",      line2: "Leading Technology"   },
+    { line1: "Creative Solutions", line2: "Superior Quality"     },
+    { line1: "Gorgeous Graphics",  line2: "Great Visibility"     },
     { line1: "Brilliant Brands",   line2: "Better Business"      },
-    { line1: "Electrifying Edge",  line2: "Expert Execution"     },
-    { line1: "Lustrous Lighting",  line2: "Lasting Impressions"  },
-    { line1: "Dynamic Displays",   line2: "Dramatic Results"     },
-    { line1: "Illuminated Ideas",  line2: "Inspired Outcomes"    },
+    { line1: "Artistic Edge",      line2: "Expert Execution"     },
+    { line1: "Perfect Lighting",   line2: "Lasting Impressions"  },
+    { line1: "Dynamic Angles",     line2: "Dramatic Results"     },
+    { line1: "Inspired Ideas",     line2: "Inspired Outcomes"    },
     { line1: "Powerful Pixels",    line2: "Professional Pride"   },
-    { line1: "Flashing Forward",   line2: "Future Ready"         },
-    { line1: "Beaming Brands",     line2: "Beautiful Results"    },
-    { line1: "Glittering Graphics", line2: "Guaranteed Quality"  },
-    { line1: "Shimmering Signs",   line2: "Spectacular Service"  },
-    { line1: "Twinkling Tech",     line2: "Total Transformation" }
+    { line1: "Looking Forward",    line2: "Future Ready"         },
+    { line1: "Beaming Faces",      line2: "Beautiful Results"    },
+    { line1: "Stunning Scenery",   line2: "Guaranteed Quality"   },
+    { line1: "Cinematic Shots",    line2: "Spectacular Service"  },
+    { line1: "Modern Tech",        line2: "Total Transformation" }
 ];
 
 // Simple typewriter for one string, with optional start delay
@@ -95,7 +95,7 @@ export default function Hero() {
             <div className="absolute inset-0 z-0">
                 <Image
                     src="https://res.cloudinary.com/dub5eqaqo/image/upload/v1753469794/pexels-roneferreira-3690005_zaazjg.jpg"
-                    alt="Professional LED signage solution"
+                    alt="Professional Photography Portfolio"
                     fill
                     className="object-cover"
                     priority
@@ -114,7 +114,7 @@ export default function Hero() {
                           bg-white/10 backdrop-blur-sm border border-white/20
                           shadow-sm hover:shadow-md transition-all duration-300">
                         <span className="text-white font-bold text-sm uppercase tracking-wider">
-                            ✨ Illuminate Your Brand
+                            ✨ Capture Your Story
                         </span>
                     </div>
 

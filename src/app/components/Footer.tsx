@@ -57,12 +57,9 @@ export default function Footer() {
                         {/* Company Info */}
                         <div className="lg:col-span-2 space-y-6">
                             <div>
-                                <h3 className="text-2xl font-bold text-blue-600 mb-2">Pixel Boards</h3>
-                                <p className="text-blue-700 font-medium mb-4">LED Signage Experts</p>
+                                <h3 className="text-2xl font-bold text-blue-600 mb-2">Exposure</h3>
                                 <p className="text-slate-600 leading-relaxed max-w-md">
-                                    Professional LED signage and display solutions expert.
-                                    We bring your vision to light with cutting-edge technology
-                                    and expert craftsmanship.
+                                    Transforming your memories into timeless art with premium photography services. Your vision, our lens.
                                 </p>
                             </div>
 
@@ -85,22 +82,22 @@ export default function Footer() {
                         {/* Quick Links */}
                         <div>
                             <h4 className="text-lg font-bold text-slate-800 mb-6 relative">
-                                Quick Links
+                                Our Services
                                 <div className="absolute bottom-[-8px] left-0 w-12 h-0.5 bg-blue-500 rounded-full" />
                             </h4>
                             <ul className="space-y-3">
                                 {[
-                                    { name: "About Us", href: "#about" },
-                                    { name: "Our Services", href: "#services" },
-                                    { name: "Portfolio", href: "#gallery" },
-                                    { name: "Client Reviews", href: "#reviews" },
-                                    { name: "Contact Us", href: "#contact" },
-                                ].map((link, index) => (
+                                    "Portrait Photography",
+                                    "Wedding Coverage",
+                                    "Commercial Shoots",
+                                    "Event Photography",
+                                    "Product Photography"
+                                ].map((service, index) => (
                                     <li key={index}>
-                                        <a href={link.href}
+                                        <a href="#services"
                                            className="text-slate-600 hover:text-blue-600 transition-colors duration-200
                                                     hover:translate-x-1 transform inline-block">
-                                            {link.name}
+                                            {service}
                                         </a>
                                     </li>
                                 ))}
@@ -183,7 +180,7 @@ export default function Footer() {
                     <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                         <div className="text-center md:text-left">
                             <p className="text-slate-600 text-sm">
-                                &copy; {currentYear} Pixel Boards. All rights reserved.
+                                &copy; {currentYear} Exposure (Professional Photography). All rights reserved.
                             </p>
                             <p className="text-slate-500 text-xs mt-1">
                                 Crafted with ❤️ by{" "}

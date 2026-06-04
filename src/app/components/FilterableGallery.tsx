@@ -12,7 +12,7 @@ type ImageType = {
     context?: { custom?: { title?: string; description?: string; client?: string } };
 };
 
-const TAGS = ["All", "LED", "ACP", "Acrylic","Fabrication"];
+const TAGS = ["All", "Portraits", "Weddings", "Commercial", "Events"];
 
 export default function FilterableGallery() {
     const [images, setImages] = useState<ImageType[]>([]);
@@ -65,7 +65,7 @@ export default function FilterableGallery() {
 
                     <p className="text-base sm:text-lg text-slate-600 max-w-3xl mx-auto mb-6 sm:mb-8 px-4">
                         Explore our latest projects and see how we bring brands to life with
-                        innovative signage solutions
+                        stunning photography
                     </p>
 
                     <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-blue-600 to-blue-800 mx-auto rounded-full" />
@@ -249,7 +249,7 @@ export default function FilterableGallery() {
 
                                     <p className="text-slate-600 leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base">
                                         {images[current]?.context?.custom?.description ||
-                                            "Quality craftsmanship meets innovative design in this stunning signage solution."}
+                                            "A stunning capture showcasing professional lighting and beautiful composition."}
                                     </p>
 
                                     {images[current]?.context?.custom?.client && (
