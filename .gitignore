@@ -30,8 +30,12 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env
 
 # vercel
 .vercel
@@ -39,8 +43,20 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+tsconfig.tsbuildinfo
 
+# IDEs and Editors
 .idea/
 .idea
+.vscode/
+*.swp
+*.swo
 
-tsconfig.tsbuildinfo
+# OS files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
