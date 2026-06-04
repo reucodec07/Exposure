@@ -15,8 +15,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "Pixel Boards - LED Signage Experts | Premium Display Solutions",
-    description: "Professional LED signage and display solutions. Custom LED boards, ACP cladding, neon signs, and professional installation services.",
+    title: "Exposure - LED Signage Experts | Premium Display Solutions",
+    description: "Professional photography portfolio and services. Capturing timeless moments including weddings, portraits, events, and commercial photography.",
 };
 
 export default function RootLayout({

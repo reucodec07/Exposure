@@ -10,54 +10,54 @@ const reviews = [
     {
         name: "Vaishali Pawar",
         stars: 5,
-        text: "One of the most Excellent Hardworking Team they have, In House Production with all the latest Technology Machineries...Good Work",
+        text: "One of the most excellent and hardworking teams! The photos from our event were absolutely stunning and delivered so quickly.",
         date: "June 2020",
-        business: "Local Business Owner",
+        business: "Event Organizer",
         verified: true,
         avatar: "VP"
     },
     {
         name: "Singh Purohit",
         stars: 5,
-        text: "Our shop's frontlite board looks amazing. The team was responsive and delivered right on time.",
+        text: "Our brand's commercial photoshoot was amazing. The team was responsive and the high-res images were exactly what we needed.",
         date: "May 2021",
-        business: "Retail Store",
+        business: "Retail Brand",
         verified: true,
         avatar: "SP"
     },
     {
         name: "Rajesh Kumar",
         stars: 5,
-        text: "The LED scrolling board they installed has significantly increased our customer footfall. Excellent ROI!",
+        text: "The professional headshots they took have significantly improved our team's online presence. Excellent quality!",
         date: "August 2021",
-        business: "Restaurant Chain",
+        business: "Corporate Director",
         verified: true,
         avatar: "RK"
     },
     {
         name: "Maria Fernandes",
         stars: 5,
-        text: "Professional team, creative designs, and quality that lasts. Our neon signage is a showstopper!",
+        text: "Professional team, creative angles, and editing that wows. Our wedding photos are an absolute treasure!",
         date: "November 2021",
-        business: "Nightclub Owner",
+        business: "Happy Bride",
         verified: true,
         avatar: "MF"
     },
     {
         name: "Amit Desai",
         stars: 5,
-        text: "They transformed our building facade with ACP cladding. Looks premium and modern. Highly recommended!",
+        text: "They transformed our product catalog with beautiful, well-lit photography. Looks premium and modern. Highly recommended!",
         date: "January 2022",
-        business: "Corporate Office",
+        business: "E-commerce Owner",
         verified: true,
         avatar: "AD"
     },
     {
         name: "Priya Sharma",
         stars: 5,
-        text: "Quick turnaround, competitive pricing, and the acrylic letters look fantastic. Will definitely use again!",
+        text: "Quick turnaround, great direction during the shoot, and the final portraits look fantastic. Will definitely book again!",
         date: "March 2022",
-        business: "Boutique Store",
+        business: "Model",
         verified: true,
         avatar: "PS"
     },

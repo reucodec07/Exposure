@@ -20,8 +20,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const folder = "PixelBoardsProject";
     let expression = `folder:${folder}`;
 
-    if (tag && tag !== "All") {
-        expression += ` AND tags=${tag}`;
+    const tagMap: Record<string, string> = {
+        "Portraits": "LED",
+        "Weddings": "ACP",
+        "Commercial": "Acrylic",
+        "Events": "Fabrication"
+    };
+
+    let cloudinaryTag = tag as string;
+    if (cloudinaryTag && tagMap[cloudinaryTag]) {
+        cloudinaryTag = tagMap[cloudinaryTag];
+    }
+
+    if (cloudinaryTag && cloudinaryTag !== "All") {
+        expression += ` AND tags=${cloudinaryTag}`;
     }
 
     try {

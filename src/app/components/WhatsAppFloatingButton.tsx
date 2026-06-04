@@ -22,6 +22,8 @@ export default function WhatsAppFloatingButton() {
         return () => window.removeEventListener('scroll', toggleVisibility);
     }, []);
 
+    const defaultMessage = "Hi Exposure! I'm interested in your photography services.";
+
     return (
         <div className={`fixed bottom-6 right-6 z-50 transition-all duration-300
                        ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
@@ -37,7 +39,7 @@ export default function WhatsAppFloatingButton() {
                                       rounded-full flex items-center justify-center text-white font-bold text-sm">
                         </div>
                         <div>
-                            <h4 className="font-semibold text-slate-800">Pixel Boards</h4>
+                            <h4 className="font-semibold text-slate-800">Exposure</h4>
                             <span className="text-slate-500 text-xs">Typically replies instantly</span>
                         </div>
                     </div>
@@ -45,7 +47,7 @@ export default function WhatsAppFloatingButton() {
                     <div className="flex items-start space-x-3">
                         <FaComment className="text-blue-500 text-lg mt-1 flex-shrink-0" />
                         <p className="text-slate-700 text-sm leading-relaxed">
-                            Hi! 👋 Ready to illuminate your business? Let&#39;s chat about your signage needs!
+                            Hi! 👋 Ready to capture your memories? Let&#39;s chat about your photography needs!
                         </p>
                     </div>
                 </div>
@@ -61,7 +63,7 @@ export default function WhatsAppFloatingButton() {
 
             {/* Main WhatsApp Button */}
             <a
-                href="https://wa.me/441234567890?text=Hi%20Pixel%20Boards!%20I'm%20interested%20in%20your%20LED%20signage%20services.%20Can%20you%20please%20provide%20more%20information?"
+                href={`https://wa.me/441234567890?text=${encodeURIComponent(defaultMessage)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="relative flex items-center justify-center w-16 h-16
